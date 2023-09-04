@@ -30,18 +30,13 @@
             "styles": [
               "src/styles.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/assets/css/backend.css",
               "src/assets/css/backend-plugin.min.css",
               "src/assets/vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css",
               "src/assets/vendor/remixicon/fonts/remixicon.css",
               "src/assets/vendor/tui-calendar/tui-calendar/dist/tui-calendar.css",
               "src/assets/vendor/tui-calendar/tui-date-picker/dist/tui-date-picker.css",
               "src/assets/vendor/tui-calendar/tui-time-picker/dist/tui-time-picker.css"
-
-
-
-
-
-
             ],
             "scripts": [
               "src/assets/js/backend-bundle.min.js",
@@ -52,11 +47,7 @@
               "src/assets/js/app.js",
               "src/assets/vendor/moment.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "node_modules/jquery/dist/jquery.min.js"
-
-
-
-           
+              "node_modules/jquery/dist/jquery.min.js"    
             ]
           },
           "configurations": {
