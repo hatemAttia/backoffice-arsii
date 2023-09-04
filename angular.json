@@ -29,6 +29,7 @@
             ],
             "styles": [
               "src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/assets/css/backend.css",
               "src/assets/css/backend-plugin.min.css",
               "src/assets/vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css",
@@ -44,7 +45,9 @@
               "src/assets/js/chart-custom.js",
               "src/assets/js/slider.js",
               "src/assets/js/app.js",
-              "src/assets/vendor/moment.min.js"
+              "src/assets/vendor/moment.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/jquery/dist/jquery.min.js"    
             ]
           },
           "configurations": {
