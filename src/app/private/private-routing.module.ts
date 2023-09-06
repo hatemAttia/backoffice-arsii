@@ -1,4 +1,4 @@
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BaseComponent } from './components/base/base.component';
 import { UserListComponent } from './components/user-list/user-list.component';
@@ -16,7 +16,11 @@ const routes: Routes = [
      {
       path: 'formations',
       component: FormationsComponent
-     }
+     },
+     {
+     path: 'admin',
+     component: FormationsComponent
+    }
     ]
   },
   {
