@@ -17,10 +17,10 @@ const routes: Routes = [
     path: 'reset',
     component: RecoverPasswordComponent,
   },
-  
+
   {
     path: '**',
-    redirectTo: '',
+    redirectTo: 'signup',
   },
 ];
 
