@@ -1,11 +1,11 @@
-import { Contact } from './contact';
+import { Contact } from '../types/contact';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from './user';
-import { UserUpdate } from './user-update';
-import { Password } from './password';
-import { Email } from './email';
+import { User } from '../types/user';
+import { UserUpdate } from '../types/user-update';
+import { Password } from '../types/password';
+import { Email } from '../types/email';
 
 @Injectable({
   providedIn: 'root',
