@@ -1,24 +1,24 @@
-import { UserService } from './../user.service';
 import { Component, OnInit } from '@angular/core';
 import { UserUpdate } from '../user-update';
-import { Router } from '@angular/router';
 import { Password } from '../password';
 import { Email } from '../email';
 import { Contact } from '../contact';
+import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  selector: 'app-change-information',
+  templateUrl: './change-information.component.html',
+  styleUrls: ['./change-information.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class ChangeInformationComponent implements OnInit {
   user_update=new UserUpdate();
-  password_update:Password|undefined;
+  password_update=new Password();
   email=new Email();
   contact=new Contact();
   msg="";
 
-  constructor(private  service :UserService,private router:Router) { }
+  constructor(private service:UserService,private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -35,6 +35,19 @@ export class DashboardComponent implements OnInit {
         console.log("Registration failed"),
         this.msg=error.error;
         this.user_update=new UserUpdate();
+      });
+  }
+  ChangePassword(){
+    this.service.PasswordService(this.password_update).subscribe(
+      data=>{console.log(this.password_update);
+        this.msg="Password is changed successfully";
+        this.password_update=new Password();
+        alert(this.msg)
+  
+      },error=>{
+        console.log("Change password failed"),
+        this.msg=error.error;
+        this.password_update=new Password();
       });
   }
 
@@ -68,15 +81,5 @@ export class DashboardComponent implements OnInit {
           });
 
       }
-  }
 
-
-
-
-
-  
-    
-
-  
-
-
+}
