@@ -9,9 +9,8 @@ import { FormationsComponent } from './components/formations/formations.componen
 import { AddFormationModalComponent } from './components/formations/add-formation-modal/add-formation-modal.component';
 import { FormsModule } from '@angular/forms';
 import { ChangeInformationComponent } from './components/change-information/change-information.component';
-import { UserService } from './components/user.service';
+import { UserService } from './components/services/user.service';
 import { EventComponent } from './components/event/event.component';
-
 
 @NgModule({
   declarations: [
@@ -21,10 +20,9 @@ import { EventComponent } from './components/event/event.component';
     FormationsComponent,
     AddFormationModalComponent,
     ChangeInformationComponent,
-    EventComponent
-    
+    EventComponent,
   ],
-  imports: [CommonModule, PrivateRoutingModule,FormsModule,HttpClientModule],
+  imports: [CommonModule, PrivateRoutingModule, FormsModule, HttpClientModule],
   providers: [UserService],
 })
 export class PrivateModule {}
