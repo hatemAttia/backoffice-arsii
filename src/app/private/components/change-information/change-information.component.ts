@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserUpdate } from '../types/user-update';
 import { Password } from '../types/password';
-import { Email } from '../types/email';
-import { Contact } from '../types/contact';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
