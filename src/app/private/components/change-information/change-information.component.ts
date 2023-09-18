@@ -82,33 +82,33 @@ export class ChangeInformationComponent implements OnInit {
     );
   }
 
-  EmailNotification() {
-    this.service.EmailService(this.email).subscribe(
-      (data) => {
-        console.log(this.password_update);
-        this.msg = 'Email sended';
-        this.email = new Email();
-        alert(this.msg);
-      },
-      (error) => {
-        console.log('Eroor'), (this.msg = error.error);
-        this.email = new Email();
-      }
-    );
-  }
+  // EmailNotification() {
+  //   this.service.EmailService(this.email).subscribe(
+  //     (data) => {
+  //       console.log(this.password_update);
+  //       this.msg = 'Email sended';
+  //       this.email = new Email();
+  //       alert(this.msg);
+  //     },
+  //     (error) => {
+  //       console.log('Eroor'), (this.msg = error.error);
+  //       this.email = new Email();
+  //     }
+  //   );
+  // }
 
-  ContactForm() {
-    this.service.ContactService(this.contact).subscribe(
-      (data) => {
-        console.log(this.user_update);
-        this.msg = 'Message send';
-        this.contact = new Contact();
-        alert(this.msg);
-      },
-      (error) => {
-        this.msg = error.error;
-        this.contact = new Contact();
-      }
-    );
-  }
+  // ContactForm() {
+  //   this.service.ContactService(this.contact).subscribe(
+  //     (data) => {
+  //       console.log(this.user_update);
+  //       this.msg = 'Message send';
+  //       this.contact = new Contact();
+  //       alert(this.msg);
+  //     },
+  //     (error) => {
+  //       this.msg = error.error;
+  //       this.contact = new Contact();
+  //     }
+  //   );
+  // }
 }
