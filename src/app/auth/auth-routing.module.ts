@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
   {
@@ -18,13 +17,10 @@ const routes: Routes = [
     path: 'reset',
     component: RecoverPasswordComponent,
   },
-  {
-    path: 'admin',
-    component: DashboardComponent,
-  },
+
   {
     path: '**',
-    redirectTo: '',
+    redirectTo: 'signup',
   },
 ];
 

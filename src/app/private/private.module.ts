@@ -12,6 +12,9 @@ import { EventsComponent } from './components/events/events.component';
 import { EditEventComponent } from './components/events/edit-event/edit-event.component';
 import { AddEventComponent } from './components/events/add-event/add-event.component';
 
+import { ChangeInformationComponent } from './components/change-information/change-information.component';
+import { UserService } from './components/services/user.service';
+import { EventComponent } from './components/event/event.component';
 
 @NgModule({
   declarations: [
@@ -23,9 +26,11 @@ import { AddEventComponent } from './components/events/add-event/add-event.compo
     EventsComponent,
     EditEventComponent,
     AddEventComponent,
-    
+
+    ChangeInformationComponent,
+    EventComponent,
   ],
-  imports: [CommonModule, PrivateRoutingModule,FormsModule,HttpClientModule],
-  providers: [],
+  imports: [CommonModule, PrivateRoutingModule, FormsModule, HttpClientModule],
+  providers: [UserService],
 })
 export class PrivateModule {}

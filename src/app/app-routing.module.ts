@@ -3,14 +3,17 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'private',
     loadChildren: () =>
       import('./private/private.module').then((m) => m.PrivateModule),
-      // import('./auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   {
     path: '**',
-    redirectTo: '',
+    redirectTo: 'auth',
     pathMatch: 'full',
   },
 ];

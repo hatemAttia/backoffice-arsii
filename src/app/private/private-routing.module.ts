@@ -5,6 +5,7 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { FormationsComponent } from './components/formations/formations.component';
 import { EventsComponent } from './components/events/events.component';
 import { EditEventComponent } from './components/events/edit-event/edit-event.component';
+import { ChangeInformationComponent } from './components/change-information/change-information.component';
 
 const routes: Routes = [
   {
@@ -31,12 +32,17 @@ const routes: Routes = [
       path: 'events/:id',
       component: EditEventComponent
      },
+     {
+      path: 'change',
+      component: ChangeInformationComponent
+     },
+     {
+      path: '**',
+      redirectTo: '',
+     },
     ]
   },
-  {
-    path: '**',
-    redirectTo: '',
-  },
+
 ];
 
 @NgModule({

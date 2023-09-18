@@ -4,15 +4,18 @@ import { User } from 'interfaces/user';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
+  private baseUrl = '/api/arsii/';
 
-  private baseUrl = 'http://localhost:8081/api/arsii/admin/me'
+  constructor(private httpClient: HttpClient) {}
 
-  constructor(private httpClient: HttpClient) { }
+  getCurrentUser(): Observable<any> {
+    return this.httpClient.get(`${this.baseUrl + 'admin/me'}`);
+  }
 
-  getUserList(): Observable<User[]>{
-    return this.httpClient.post<User[]>(`${this.baseUrl}`, {});
+  getUserList(): Observable<any> {
+    return this.httpClient.get(`${this.baseUrl + 'member'}`);
   }
 }
