@@ -55,30 +55,29 @@ export class ChangeInformationComponent implements OnInit {
 
   selectedFile: File | null = null;
 
-  onFileSelected(event: any) {
-    this.selectedFile = event.target.files[0];
-  }
-
-  uploadFile() {
-    if (!this.selectedFile) {
-      return;
-    }
-
-    const formData = new FormData();
-    formData.append('cv', this.selectedFile);
-
-    // Replace 'your-upload-api-url' with the actual URL to your server-side API
-    this.http.post('http://localhost/api/cv', formData).subscribe(
-      (response) => {
-        console.log('File uploaded successfully:', response);
-        // Handle success, e.g., display a success message to the user
-      },
-      (error) => {
-        console.error('File upload error:', error);
-        // Handle error, e.g., display an error message to the user
+    
+      onFileSelected(event: any) {
+        this.selectedFile = event.target.files[0];
       }
-    );
-  }
+    
+      uploadFile() {
+        if (!this.selectedFile) {
+          return;
+        }
+    
+        const formData = new FormData();
+       // formData.append('cv', this.selectedFile);
+        //this.service.CvService(formData) .subscribe(
+         // (response) => {
+           // console.log('File uploaded successfully:', response);
+          //},
+          //(error) => {
+           // console.error('File upload error:', error);
+          //}
+        //);
+      }
+
+  
 
   // EmailNotification() {
   //   this.service.EmailService(this.email).subscribe(

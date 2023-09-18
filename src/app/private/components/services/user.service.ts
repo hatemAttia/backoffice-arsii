@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { User } from '../types/user';
 import { UserUpdate } from '../types/user-update';
 import { Password } from '../types/password';
-import { Email } from '../types/email';
 
 @Injectable({
   providedIn: 'root',
@@ -27,9 +26,6 @@ export class UserService {
   }
   public PasswordService(password: Password): Observable<any> {
     return this.http.post<any>('api/arsii/admin/password', password);
-  }
-  public EmailService(email: Email): Observable<any> {
-    return this.http.post<any>('api/', email);
   }
   public ContactService(contact: Contact): Observable<any> {
     return this.http.post<any>('api/', contact);
