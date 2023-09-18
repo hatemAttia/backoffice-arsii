@@ -5,6 +5,7 @@ import { Email } from '../types/email';
 import { Contact } from '../types/contact';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-change-information',
@@ -14,11 +15,13 @@ import { Router } from '@angular/router';
 export class ChangeInformationComponent implements OnInit {
   user_update = new UserUpdate();
   password_update = new Password();
-  email = new Email();
-  contact = new Contact();
   msg = '';
 
-  constructor(private service: UserService, private router: Router) {}
+  constructor(
+    private service: UserService,
+    private router: Router,
+    private http: HttpClient
+  ) {}
 
   ngOnInit(): void {}
 
@@ -52,33 +55,60 @@ export class ChangeInformationComponent implements OnInit {
     );
   }
 
-  EmailNotification() {
-    this.service.EmailService(this.email).subscribe(
-      (data) => {
-        console.log(this.password_update);
-        this.msg = 'Email sended';
-        this.email = new Email();
-        alert(this.msg);
+  selectedFile: File | null = null;
+
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+  }
+
+  uploadFile() {
+    if (!this.selectedFile) {
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('cv', this.selectedFile);
+
+    // Replace 'your-upload-api-url' with the actual URL to your server-side API
+    this.http.post('http://localhost/api/cv', formData).subscribe(
+      (response) => {
+        console.log('File uploaded successfully:', response);
+        // Handle success, e.g., display a success message to the user
       },
       (error) => {
-        console.log('Eroor'), (this.msg = error.error);
-        this.email = new Email();
+        console.error('File upload error:', error);
+        // Handle error, e.g., display an error message to the user
       }
     );
   }
 
-  ContactForm() {
-    this.service.ContactService(this.contact).subscribe(
-      (data) => {
-        console.log(this.user_update);
-        this.msg = 'Message send';
-        this.contact = new Contact();
-        alert(this.msg);
-      },
-      (error) => {
-        this.msg = error.error;
-        this.contact = new Contact();
-      }
-    );
-  }
+  // EmailNotification() {
+  //   this.service.EmailService(this.email).subscribe(
+  //     (data) => {
+  //       console.log(this.password_update);
+  //       this.msg = 'Email sended';
+  //       this.email = new Email();
+  //       alert(this.msg);
+  //     },
+  //     (error) => {
+  //       console.log('Eroor'), (this.msg = error.error);
+  //       this.email = new Email();
+  //     }
+  //   );
+  // }
+
+  // ContactForm() {
+  //   this.service.ContactService(this.contact).subscribe(
+  //     (data) => {
+  //       console.log(this.user_update);
+  //       this.msg = 'Message send';
+  //       this.contact = new Contact();
+  //       alert(this.msg);
+  //     },
+  //     (error) => {
+  //       this.msg = error.error;
+  //       this.contact = new Contact();
+  //     }
+  //   );
+  // }
 }

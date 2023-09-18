@@ -7,14 +7,15 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { FormationsComponent } from './components/formations/formations.component';
 import { AddFormationModalComponent } from './components/formations/add-formation-modal/add-formation-modal.component';
-import { FormsModule } from '@angular/forms';
-import { EventsComponent } from './components/events/events.component';
-import { EditEventComponent } from './components/events/edit-event/edit-event.component';
-import { AddEventComponent } from './components/events/add-event/add-event.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SkillsComponent } from './components/skills/skills.component';
 
 import { ChangeInformationComponent } from './components/change-information/change-information.component';
 import { UserService } from './components/services/user.service';
 import { EventComponent } from './components/event/event.component';
+import { EventsComponent } from './components/events/events.component';
+import { EditEventComponent } from './components/events/edit-event/edit-event.component';
+import { AddEventComponent } from './components/events/add-event/add-event.component';
 
 @NgModule({
   declarations: [
@@ -29,8 +30,15 @@ import { EventComponent } from './components/event/event.component';
 
     ChangeInformationComponent,
     EventComponent,
+    SkillsComponent,
   ],
-  imports: [CommonModule, PrivateRoutingModule, FormsModule, HttpClientModule],
+  imports: [
+    CommonModule,
+    PrivateRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+  ],
   providers: [UserService],
 })
 export class PrivateModule {}
