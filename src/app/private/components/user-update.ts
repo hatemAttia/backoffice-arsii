@@ -17,4 +17,5 @@ export class UserUpdate{
     urlSite!:string;
     urlLinkedin!:string;
 
+
 }

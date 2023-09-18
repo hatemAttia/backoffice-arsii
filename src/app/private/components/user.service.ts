@@ -34,7 +34,12 @@ export class UserService {
     return this.http.post<any>("http://localhost:8090/api/arsii/admin/password",password);
 
   }
+  public CvService(data:FormData):Observable<any>{
+    return this.http.post<any>("http://localhost:8090/api/cv",data);
+
+  }
  
+
   
 
 

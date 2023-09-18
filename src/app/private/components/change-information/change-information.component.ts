@@ -66,16 +66,12 @@ export class ChangeInformationComponent implements OnInit {
     
         const formData = new FormData();
         formData.append('cv', this.selectedFile);
-    
-        // Replace 'your-upload-api-url' with the actual URL to your server-side API
-        this.http.post('http://localhost/api/cv', formData).subscribe(
+        this.service.CvService(formData) .subscribe(
           (response) => {
             console.log('File uploaded successfully:', response);
-            // Handle success, e.g., display a success message to the user
           },
           (error) => {
             console.error('File upload error:', error);
-            // Handle error, e.g., display an error message to the user
           }
         );
       }
