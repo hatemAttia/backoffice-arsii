@@ -8,11 +8,13 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { FormationsComponent } from './components/formations/formations.component';
 import { AddFormationModalComponent } from './components/formations/add-formation-modal/add-formation-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ChangeInformationComponent } from './components/change-information/change-information.component';
-import { UserService } from './components/user.service';
-import { EventComponent } from './components/event/event.component';
 import { SkillsComponent } from './components/skills/skills.component';
 
+import { ChangeInformationComponent } from './components/change-information/change-information.component';
+import { UserService } from './components/services/user.service';
+import { EventsComponent } from './components/events/events.component';
+import { EditEventComponent } from './components/events/edit-event/edit-event.component';
+import { AddEventComponent } from './components/events/add-event/add-event.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +23,20 @@ import { SkillsComponent } from './components/skills/skills.component';
     UserListComponent,
     FormationsComponent,
     AddFormationModalComponent,
+    EventsComponent,
+    EditEventComponent,
+    AddEventComponent,
+
     ChangeInformationComponent,
-    EventComponent,
-    SkillsComponent
-    
+    SkillsComponent,
   ],
-  imports: [CommonModule, PrivateRoutingModule,FormsModule,HttpClientModule,ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    PrivateRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+  ],
   providers: [UserService],
 })
 export class PrivateModule {}
