@@ -16,6 +16,6 @@ export class UserService {
   }
 
   getUserList(): Observable<any> {
-    return this.httpClient.get(`${this.baseUrl + 'member'}`);
+    return this.httpClient.post(`${this.baseUrl + 'admin/filter'}`, {});
   }
 }

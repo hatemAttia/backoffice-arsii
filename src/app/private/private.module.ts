@@ -14,7 +14,6 @@ import { AddEventComponent } from './components/events/add-event/add-event.compo
 
 import { ChangeInformationComponent } from './components/change-information/change-information.component';
 import { UserService } from './components/services/user.service';
-import { EventComponent } from './components/event/event.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +27,6 @@ import { EventComponent } from './components/event/event.component';
     AddEventComponent,
 
     ChangeInformationComponent,
-    EventComponent,
   ],
   imports: [CommonModule, PrivateRoutingModule, FormsModule, HttpClientModule],
   providers: [UserService],
