@@ -4,6 +4,7 @@ import { BaseComponent } from './components/base/base.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { FormationsComponent } from './components/formations/formations.component';
 import { ChangeInformationComponent } from './components/change-information/change-information.component';
+import { SkillsComponent } from './components/skills/skills.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
     {
       path: 'change',
       component: ChangeInformationComponent
+     },
+     {
+      path: 'skills',
+      component: SkillsComponent
      },
      {
       path: '**',

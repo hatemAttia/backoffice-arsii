@@ -1,9 +1,14 @@
 export class User{
-    full_name!:string;
-    last_name!:string;
+    firstName!:string;
+    lastName!:string;
+    userName!:string;
     email!:string;
-    phone!:string;
+    phoneNumber!:string;
+    gender!:string;
     password!:string;
+    region!:string;
+    job!:string;
+    universityOrCompany!:string;
     confirm_password!:string;
 
 }

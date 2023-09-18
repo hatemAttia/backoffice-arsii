@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { User } from './user';
 import { UserUpdate } from './user-update';
 import { Password } from './password';
-import { Email } from './email';
 
 
 
@@ -35,14 +34,8 @@ export class UserService {
     return this.http.post<any>("http://localhost:8090/api/arsii/admin/password",password);
 
   }
-  public EmailService(email:Email):Observable<any>{
-    return this.http.post<any>("http://localhost:8090/api/",email);
-
-  }
-  public ContactService(contact:Contact):Observable<any>{
-    return this.http.post<any>("http://localhost:8090/api/",contact);
-
-  }
+ 
+  
 
 
 }

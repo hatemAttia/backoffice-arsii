@@ -7,10 +7,11 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { FormationsComponent } from './components/formations/formations.component';
 import { AddFormationModalComponent } from './components/formations/add-formation-modal/add-formation-modal.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChangeInformationComponent } from './components/change-information/change-information.component';
 import { UserService } from './components/user.service';
 import { EventComponent } from './components/event/event.component';
+import { SkillsComponent } from './components/skills/skills.component';
 
 
 @NgModule({
@@ -21,10 +22,11 @@ import { EventComponent } from './components/event/event.component';
     FormationsComponent,
     AddFormationModalComponent,
     ChangeInformationComponent,
-    EventComponent
+    EventComponent,
+    SkillsComponent
     
   ],
-  imports: [CommonModule, PrivateRoutingModule,FormsModule,HttpClientModule],
+  imports: [CommonModule, PrivateRoutingModule,FormsModule,HttpClientModule,ReactiveFormsModule],
   providers: [UserService],
 })
 export class PrivateModule {}
