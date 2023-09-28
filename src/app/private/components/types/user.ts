@@ -1,14 +1,18 @@
-export class User{
-    firstName!:string;
-    lastName!:string;
-    userName!:string;
-    function!:string;
-    email!:string;
-    password!:string;
-    gender!:string;
-    phoneNumber!:string;
-    region!:string;
-    job!:string;
-    confirm_password!:string;
-
+export class User {
+  id!:number
+  firstName!: string;
+  lastName!: string;
+  userName!: string;
+  email!: string;
+  password!: string;
+  gender!: string;
+  dateOfBirth!:string;
+  phoneNumber!: string;
+  region!: string;
+  job!: string;
+  universityOrCompany!: string;
+  office!:string;
+  cv!:string;
+  image!:string;
+  
 }

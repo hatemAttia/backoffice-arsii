@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from '../user';
+import { User } from '../types/user';
 import { UserService } from '../../services/user.service';
 import { MessageService } from 'primeng/api';
 
@@ -12,6 +12,11 @@ import { MessageService } from 'primeng/api';
 export class SignupComponent implements OnInit {
   user = new User();
   msg = '';
+  ListOffice=[
+  {  value:'OFFICE_SFAX',title:'SFAX'},
+  {  value:'OFFICE_SOUSSE',title:'SOUSSE'},
+  {  value:'OFFICE_TUNIS',title:'TUNIS'}
+  ]
   constructor(
     private router: Router,
     private service: UserService,
@@ -36,10 +41,10 @@ export class SignupComponent implements OnInit {
         this.messageService.add({
           severity: 'error',
           summary: 'Registration failed',
-          detail: 'Registration failed',
+          detail:error.error,
         });
         console.log('Registration failed'), (this.msg = error.error);
-        this.user = new User();
+      //  this.user = new User();
       }
     );
   }

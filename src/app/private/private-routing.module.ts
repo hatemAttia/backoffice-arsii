@@ -6,7 +6,6 @@ import { FormationsComponent } from './components/formations/formations.componen
 import { EventsComponent } from './components/events/events.component';
 import { EditEventComponent } from './components/events/edit-event/edit-event.component';
 import { ChangeInformationComponent } from './components/change-information/change-information.component';
-import { SkillsComponent } from './components/skills/skills.component';
 
 const routes: Routes = [
   {
@@ -37,10 +36,7 @@ const routes: Routes = [
       path: 'change',
       component: ChangeInformationComponent
      },
-     {
-      path: 'skills',
-      component: SkillsComponent
-     },
+     
      {
       path: '**',
       redirectTo: '',

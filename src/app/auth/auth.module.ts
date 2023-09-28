@@ -5,12 +5,11 @@ import { SigninComponent } from './components/signin/signin.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { SignupComponent } from './components/signup/signup.component';
 import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
-import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [SigninComponent, SignupComponent, RecoverPasswordComponent],
-  imports: [CommonModule, AuthRoutingModule, FormsModule, HttpClientModule],
+  imports: [CommonModule, AuthRoutingModule, FormsModule],
   providers: [UserService],
 })
 export class AuthModule {}

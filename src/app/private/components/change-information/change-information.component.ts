@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { UserUpdate } from '../types/user-update';
 import { Password } from '../types/password';
-import { UserService } from '../services/user.service';
-import { Router } from '@angular/router';
+import { MemberService, } from '../services/member.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Skill } from '../types/skill';
+import { Contact } from '../types/contact';
+import { User } from '../types/user';
 
 @Component({
   selector: 'app-change-information',
@@ -14,26 +18,77 @@ export class ChangeInformationComponent implements OnInit {
   user_update = new UserUpdate();
   password_update = new Password();
   msg = '';
+  skill=new Skill();
+  contact=new Contact();
+  categories : Observable<any> | null = null;
+  skills : Observable<any> | null = null;
+  id!:number;
+  user:any;
+
 
   constructor(
-    private service: UserService,
+    private service: MemberService,
     private router: Router,
-    private http: HttpClient
+    private route: ActivatedRoute
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
 
-  ChangeUser() {
-    this.service.InformationService(this.user_update).subscribe(
+    this.service.getUserById().subscribe(
       (data) => {
         console.log(this.user_update);
-        this.msg = 'Registration successfully';
-        this.user_update = new UserUpdate();
-        alert(this.msg);
-        this.router.navigate(['/auth/signin']);
+        this.msg = 'Updated successfully';
+        this.user_update = data;
+        console.log(data);
+        console.log(this.user);
+        
       },
       (error) => {
-        console.log('Registration failed'), (this.msg = error.error);
+        console.log('Update is failed'), (this.msg = error.error);
+        this.user = new User();
+      }
+    );
+
+    this.categories=this.service.getCategories();
+    this.skills=this.service.getSkills();
+
+
+    
+
+    
+  }
+  onFileSeleccted(event: any) {
+    const file: File = event.target.files[0];
+    const userId=this.id
+    
+    if (file && userId) {
+      const formData = new FormData();
+      formData.append('file', file); // 'file' should match the key expected by your API
+      
+      this.service.uploadImage(formData, userId).subscribe(
+        (response) => {
+          // Handle the success response
+          console.log(response);
+        },
+        (error) => {
+          // Handle errors
+          console.error(error);
+        }
+      );
+    }
+  }
+  
+
+  ChangeUser() {
+    this.service.updateMember(this.user_update).subscribe(
+      (data) => {
+        console.log(this.user_update);
+        this.msg = 'Updated successfully';
+        this.user_update = new UserUpdate();
+        alert(this.msg);
+      },
+      (error) => {
+        console.log('Update is failed'), (this.msg = error.error);
         this.user_update = new UserUpdate();
       }
     );
@@ -52,60 +107,53 @@ export class ChangeInformationComponent implements OnInit {
       }
     );
   }
+  Contact(){
+    this.service.ContactService(this.contact).subscribe(
+      (data) => {
+        console.log(this.password_update);
+        this.msg = 'Contact urls sended successfully';
+        this.contact = new Contact();
+        alert(this.msg);
+      },
+      (error) => {
+        console.log('error,send contact urls failed'), (this.msg = error.error);
+        this.contact = new Contact();
+      }
+    );
+  }
 
   selectedFile: File | null = null;
 
-    
       onFileSelected(event: any) {
         this.selectedFile = event.target.files[0];
       }
-    
       uploadFile() {
         if (!this.selectedFile) {
           return;
         }
-    
-        const formData = new FormData();
-       // formData.append('cv', this.selectedFile);
-        //this.service.CvService(formData) .subscribe(
-         // (response) => {
-           // console.log('File uploaded successfully:', response);
-          //},
-          //(error) => {
-           // console.error('File upload error:', error);
-          //}
-        //);
+      
+        this.service.uploadCV(this.selectedFile, this.id).subscribe(
+          (response) => {
+            console.log('File uploaded successfully:', response);
+          },
+          (error) => {
+            console.error('File upload error:', error);
+          }
+        );
       }
+
+      deleteCategory(id:number){
+
+      }
+      updateCategory(id:number){
+
+      }
+      
+      
+
+
+     
 
   
 
-  // EmailNotification() {
-  //   this.service.EmailService(this.email).subscribe(
-  //     (data) => {
-  //       console.log(this.password_update);
-  //       this.msg = 'Email sended';
-  //       this.email = new Email();
-  //       alert(this.msg);
-  //     },
-  //     (error) => {
-  //       console.log('Eroor'), (this.msg = error.error);
-  //       this.email = new Email();
-  //     }
-  //   );
-  // }
-
-  // ContactForm() {
-  //   this.service.ContactService(this.contact).subscribe(
-  //     (data) => {
-  //       console.log(this.user_update);
-  //       this.msg = 'Message send';
-  //       this.contact = new Contact();
-  //       alert(this.msg);
-  //     },
-  //     (error) => {
-  //       this.msg = error.error;
-  //       this.contact = new Contact();
-  //     }
-  //   );
-  // }
-}
+  }
