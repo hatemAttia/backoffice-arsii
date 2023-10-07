@@ -1,5 +1,8 @@
 export class Contact{
-    number!:number;
-    email!:string;
+
+    userId!:number;
+    url!:string;
+    platform!:string;
+
    
 }

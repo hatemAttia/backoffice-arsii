@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from '../user';
+import { User } from '../types/user';
 import { UserService } from '../../services/user.service';
 import { MessageService } from 'primeng/api';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-signin',
@@ -14,6 +15,7 @@ export class SigninComponent implements OnInit {
   msg = '';
   constructor(
     private router: Router,
+    private authService:AuthService,
     private service: UserService,
     private messageService: MessageService
   ) {}
@@ -24,7 +26,7 @@ export class SigninComponent implements OnInit {
       (res) => {
         console.log(res);
         localStorage.setItem('access_token', res.token);
-        this.router.navigate(['/private/formations']);
+        this.router.navigate(['/private'])
       },
       (error) => {
         console.log('exception occured'),

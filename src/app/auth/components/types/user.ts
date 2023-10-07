@@ -1,13 +1,16 @@
 export class User {
+  id!:number;
   firstName!: string;
   lastName!: string;
   userName!: string;
   email!: string;
-  phoneNumber!: string;
-  gender!: string;
   password!: string;
+  gender!: string;
+  dateOfBirth!:string;
+  phoneNumber!: string;
   region!: string;
   job!: string;
   universityOrCompany!: string;
-  confirm_password!: string;
+  office!:string;
+  
 }
