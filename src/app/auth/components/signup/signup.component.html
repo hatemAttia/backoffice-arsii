@@ -21,6 +21,11 @@
                               type="text"
                               name="fname"
                               [(ngModel)]="user.firstName"
+                              required
+                              #fname="ngModel"
+                              [class.is-invalid]="
+                                fname.invalid && fname.touched
+                              "
                             />
                             <label>First Name</label>
                           </div>
@@ -32,6 +37,11 @@
                               type="text"
                               name="lname"
                               [(ngModel)]="user.lastName"
+                              required
+                              #lname="ngModel"
+                              [class.is-invalid]="
+                                lname.invalid && lname.touched
+                              "
                             />
                             <label>Last Name</label>
                           </div>
@@ -45,6 +55,11 @@
                               type="text"
                               name="uname"
                               [(ngModel)]="user.userName"
+                              required
+                              #uname="ngModel"
+                              [class.is-invalid]="
+                                uname.invalid && uname.touched
+                              "
                             />
                             <label>User Name</label>
                           </div>
@@ -57,6 +72,11 @@
                               type="email"
                               name="email"
                               [(ngModel)]="user.email"
+                              required
+                              #email="ngModel"
+                              [class.is-invalid]="
+                                email.invalid && email.touched
+                              "
                             />
                             <label>Email</label>
                           </div>
@@ -68,6 +88,11 @@
                               type="text"
                               name="phone"
                               [(ngModel)]="user.phoneNumber"
+                              required
+                              #phone="ngModel"
+                              [class.is-invalid]="
+                                phone.invalid && phone.touched
+                              "
                             />
                             <label>Phone No.</label>
                           </div>
@@ -79,6 +104,11 @@
                               type="text"
                               name="region"
                               [(ngModel)]="user.region"
+                              required
+                              #region="ngModel"
+                              [class.is-invalid]="
+                                region.invalid && region.touched
+                              "
                             />
                             <label>Region</label>
                           </div>
@@ -90,6 +120,9 @@
                               type="text"
                               name="job"
                               [(ngModel)]="user.universityOrCompany"
+                              required
+                              #univ="ngModel"
+                              [class.is-invalid]="univ.invalid && univ.touched"
                             />
                             <label>University or company</label>
                           </div>
@@ -101,6 +134,9 @@
                               type="text"
                               name="job"
                               [(ngModel)]="user.job"
+                              required
+                              #job="ngModel"
+                              [class.is-invalid]="job.invalid && job.touched"
                             />
                             <label>Job</label>
                           </div>
@@ -157,6 +193,11 @@
                               type="date"
                               name="birth"
                               [(ngModel)]="user.dateOfBirth"
+                              required
+                              #birth="ngModel"
+                              [class.is-invalid]="
+                                birth.invalid && birth.touched
+                              "
                             />
                             <label>Date Of Birth</label>
                           </div>
@@ -168,6 +209,11 @@
                               type="password"
                               name="password"
                               [(ngModel)]="user.password"
+                              required
+                              #password="ngModel"
+                              [class.is-invalid]="
+                                password.invalid && password.touched
+                              "
                             />
                             <label>Password</label>
                           </div>
@@ -179,6 +225,11 @@
                               id=""
                               [(ngModel)]="user.office"
                               [ngModelOptions]="{ standalone: true }"
+                              required
+                              #office="ngModel"
+                              [class.is-invalid]="
+                                office.invalid && office.touched
+                              "
                             >
                               <option
                                 *ngFor="let office of ListOffice"
@@ -192,7 +243,11 @@
                         </div>
                       </div>
 
-                      <button type="submit" class="btn btn-white">
+                      <button
+                        [disabled]="Signupform.form.invalid"
+                        type="submit"
+                        class="btn btn-white"
+                      >
                         Sign Up
                       </button>
                       <p class="mt-3">
