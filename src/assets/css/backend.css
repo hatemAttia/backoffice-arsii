@@ -25969,7 +25969,7 @@ fieldset[disabled] .btn {
   border: 1px solid #e0e2db;
 }
 .floating-input:not(:placeholder-shown) ~ label {
-  top: 0;
+  /* top: 0; */
   font-size: 14px;
   background: #f8f7f7;
   padding: 5px 8px;
