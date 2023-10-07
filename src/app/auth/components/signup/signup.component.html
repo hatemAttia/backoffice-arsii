@@ -1,8 +1,10 @@
 <div class="wrapper">
   <section class="login-content">
     <div class="container">
-      <div class="row align-items-center justify-content-center height-self-center">
-        <div class="col-lg-8">
+      <div
+        class="row align-items-center justify-content-center height-self-center"
+      >
+        <div class="col-lg-12">
           <div class="card auth-card">
             <div class="card-body p-0">
               <div class="d-flex align-items-center auth-content">
@@ -14,15 +16,23 @@
                       <div class="row">
                         <div class="col-lg-6">
                           <div class="floating-label form-group">
-                            <input class="floating-input form-control" type="text" name="fname"
-                              [(ngModel)]="user.firstName" />
+                            <input
+                              class="floating-input form-control"
+                              type="text"
+                              name="fname"
+                              [(ngModel)]="user.firstName"
+                            />
                             <label>First Name</label>
                           </div>
                         </div>
                         <div class="col-lg-6">
                           <div class="floating-label form-group">
-                            <input class="floating-input form-control" type="text" name="lname"
-                              [(ngModel)]="user.lastName" />
+                            <input
+                              class="floating-input form-control"
+                              type="text"
+                              name="lname"
+                              [(ngModel)]="user.lastName"
+                            />
                             <label>Last Name</label>
                           </div>
                         </div>
@@ -30,85 +40,152 @@
 
                         <div class="col-lg-6">
                           <div class="floating-label form-group">
-                            <input class="floating-input form-control" type="text" name="uname"
-                              [(ngModel)]="user.userName" />
+                            <input
+                              class="floating-input form-control"
+                              type="text"
+                              name="uname"
+                              [(ngModel)]="user.userName"
+                            />
                             <label>User Name</label>
                           </div>
                         </div>
 
                         <div class="col-lg-6">
                           <div class="floating-label form-group">
-                            <input class="floating-input form-control" type="email" name="email"
-                              [(ngModel)]="user.email" />
+                            <input
+                              class="floating-input form-control"
+                              type="email"
+                              name="email"
+                              [(ngModel)]="user.email"
+                            />
                             <label>Email</label>
                           </div>
                         </div>
                         <div class="col-lg-6">
                           <div class="floating-label form-group">
-                            <input class="floating-input form-control" type="text" name="phone"
-                              [(ngModel)]="user.phoneNumber" />
+                            <input
+                              class="floating-input form-control"
+                              type="text"
+                              name="phone"
+                              [(ngModel)]="user.phoneNumber"
+                            />
                             <label>Phone No.</label>
                           </div>
                         </div>
                         <div class="col-lg-6">
                           <div class="floating-label form-group">
-                            <input class="floating-input form-control" type="text" name="region"
-                              [(ngModel)]="user.region" />
+                            <input
+                              class="floating-input form-control"
+                              type="text"
+                              name="region"
+                              [(ngModel)]="user.region"
+                            />
                             <label>Region</label>
                           </div>
                         </div>
                         <div class="col-lg-12">
                           <div class="floating-label form-group">
-                            <input class="floating-input form-control" type="text" name="job"
-                              [(ngModel)]="user.universityOrCompany" />
+                            <input
+                              class="floating-input form-control"
+                              type="text"
+                              name="job"
+                              [(ngModel)]="user.universityOrCompany"
+                            />
                             <label>University or company</label>
                           </div>
                         </div>
                         <div class="col-lg-6">
                           <div class="floating-label form-group">
-                            <input class="floating-input form-control" type="text" name="job" [(ngModel)]="user.job" />
+                            <input
+                              class="floating-input form-control"
+                              type="text"
+                              name="job"
+                              [(ngModel)]="user.job"
+                            />
                             <label>Job</label>
                           </div>
                         </div>
                         <div class="form-group col-lg-6">
-                          <label class="d-block" style="color: white">Gender:</label>
-                          <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="male" name="customRadio1" class="custom-control-input"
-                              [(ngModel)]="user.gender" value="male" checked />
-                            <label class="custom-control-label" for="male" style="color: white">
+                          <label class="d-block" style="color: white"
+                            >Gender:</label
+                          >
+                          <div
+                            class="custom-control custom-radio custom-control-inline"
+                          >
+                            <input
+                              type="radio"
+                              id="male"
+                              name="customRadio1"
+                              class="custom-control-input"
+                              [(ngModel)]="user.gender"
+                              value="male"
+                              checked
+                            />
+                            <label
+                              class="custom-control-label"
+                              for="male"
+                              style="color: white"
+                            >
                               Male
                             </label>
                           </div>
-                          <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="female" name="customRadio2" class="custom-control-input"
-                              [(ngModel)]="user.gender" value="female" />
-                            <label class="custom-control-label" for="female" style="color: white">
+                          <div
+                            class="custom-control custom-radio custom-control-inline"
+                          >
+                            <input
+                              type="radio"
+                              id="female"
+                              name="customRadio2"
+                              class="custom-control-input"
+                              [(ngModel)]="user.gender"
+                              value="female"
+                            />
+                            <label
+                              class="custom-control-label"
+                              for="female"
+                              style="color: white"
+                            >
                               Female
                             </label>
                           </div>
                         </div>
 
-
                         <div class="col-lg-6">
                           <div class="floating-label form-group">
-                            <input class="floating-input form-control" type="date" name="birth"
-                              [(ngModel)]="user.dateOfBirth" />
+                            <input
+                              class="floating-input form-control"
+                              type="date"
+                              name="birth"
+                              [(ngModel)]="user.dateOfBirth"
+                            />
                             <label>Date Of Birth</label>
                           </div>
                         </div>
                         <div class="col-lg-6">
                           <div class="floating-label form-group">
-                            <input class="floating-input form-control" type="password" name="password"
-                              [(ngModel)]="user.password" />
+                            <input
+                              class="floating-input form-control"
+                              type="password"
+                              name="password"
+                              [(ngModel)]="user.password"
+                            />
                             <label>Password</label>
                           </div>
                         </div>
                         <div class="col-lg-6">
                           <div class="floating-label form-group">
-                            <select class="floating-input form-control"  id="" 
-                              [(ngModel)]="user.office" [ngModelOptions]="{standalone: true}">
-                              <option *ngFor="let office of ListOffice" [value]="office.value">{{office?.title}}</option>
-
+                            <select
+                              class="floating-input form-control"
+                              id=""
+                              [(ngModel)]="user.office"
+                              [ngModelOptions]="{ standalone: true }"
+                            >
+                              <option
+                                *ngFor="let office of ListOffice"
+                                [value]="office.value"
+                              >
+                                {{ office?.title }}
+                              </option>
                             </select>
                             <label>Office</label>
                           </div>
@@ -120,13 +197,21 @@
                       </button>
                       <p class="mt-3">
                         Already have an Account
-                        <a routerLink="/auth/signin" class="text-white text-underline">Sign In</a>
+                        <a
+                          routerLink="/auth/signin"
+                          class="text-white text-underline"
+                          >Sign In</a
+                        >
                       </p>
                     </form>
                   </div>
                 </div>
                 <div class="col-lg-6 content-right">
-                  <img src="../assets/images/login/01.png" class="img-fluid image-right" alt="" />
+                  <img
+                    src="../assets/images/login/01.png"
+                    class="img-fluid image-right"
+                    alt=""
+                  />
                 </div>
               </div>
             </div>

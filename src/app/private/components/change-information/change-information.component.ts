@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserUpdate } from '../types/user-update';
 import { Password } from '../types/password';
-import { MemberService, } from '../services/member.service';
+import { MemberService } from '../services/member.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Skill } from '../types/skill';
@@ -17,15 +17,15 @@ import { Cv } from '../types/cv';
 export class ChangeInformationComponent implements OnInit {
   user_update = new UserUpdate();
   msg = '';
-  skill=new Skill();
-  cv=new Cv();
-  contact=new Contact();
-  categories : Observable<any> | null = null;
-  skills : Observable<any> | null = null;
-  id!:number;
+  skill = new Skill();
+  cv = new Cv();
+  contact = new Contact();
+  categories: Observable<any> | null = null;
+  skills: Observable<any> | null = null;
+  id!: number;
   password_update: Password = {
     oldPassword: '',
-    newPassword: ''
+    newPassword: '',
   }; // Declare the type here
 
   showPassword = false;
@@ -34,60 +34,51 @@ export class ChangeInformationComponent implements OnInit {
     this.showPassword = !this.showPassword;
   }
 
-
-
   constructor(
     private service: MemberService,
     private router: Router,
-    private route: ActivatedRoute,private messageService: MessageService
+    private route: ActivatedRoute,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
-
     this.service.getUserById().subscribe(
       (data) => {
         console.log(this.user_update);
         this.msg = 'Updated successfully';
         console.log(data);
-        this.id=data.id
-        this.user_update.firstName=data.firstName;
-        this.user_update.lastName=data.lastName;
-        this.user_update.email= data.email;
-        this.user_update.userName=data.userName;
-        this.user_update.job=data.job;
-        this.user_update.phoneNumber=data.phoneNumber;
-        this.user_update.office=data.office;
-        this.user_update.region=data.region;
-        this.user_update.universityOrCompany=data.universityOrCompany;
-        this.user_update.dateOfBirth=data.dateOfBirth;
+        this.id = data.id;
+        this.user_update.firstName = data.firstName;
+        this.user_update.lastName = data.lastName;
+        this.user_update.email = data.email;
+        this.user_update.userName = data.userName;
+        this.user_update.job = data.job;
+        this.user_update.phoneNumber = data.phoneNumber;
+        this.user_update.office = data.office;
+        this.user_update.region = data.region;
+        this.user_update.universityOrCompany = data.universityOrCompany;
+        this.user_update.dateOfBirth = data.dateOfBirth;
         console.log(data);
-        
       },
       (error) => {
         console.log('Update is failed'), (this.msg = error.error);
       }
     );
 
-    this.categories=this.service.getCategories();
-    this.skills=this.service.getSkills();
-
-
-    
-
-    
+    this.categories = this.service.getCategories();
+    this.skills = this.service.getSkills();
   }
- 
-imageUrl: string = '11.png';
 
-onImageSelected(event: any): void {
-  const file = event.target.files[0];
-  if (file) {
-    // Extract the file name from the selected file
-    const fileName = file.name;
-    this.imageUrl = fileName;
+  imageUrl: string = '11.png';
+
+  onImageSelected(event: any): void {
+    const file = event.target.files[0];
+    if (file) {
+      // Extract the file name from the selected file
+      const fileName = file.name;
+      this.imageUrl = fileName;
+    }
   }
-}
-
 
   ChangeUser() {
     this.service.updateMember(this.user_update).subscribe(
@@ -96,11 +87,9 @@ onImageSelected(event: any): void {
         this.msg = 'Updated successfully';
         this.user_update = new UserUpdate();
         alert(this.msg);
-        
       },
       (error) => {
-        console.log('Update is failed'), 
-        (this.msg = error.error);
+        console.log('Update is failed'), (this.msg = error.error);
         this.messageService.add({
           severity: 'error',
           summary: 'failed ! please check your information',
@@ -128,16 +117,16 @@ onImageSelected(event: any): void {
       }
     );
   }
-  Contact(){
+  Contact() {
     this.service.getUserById().subscribe(
       (data) => {
-        this.contact.userId=data.id
+        this.contact.userId = data.id;
       },
       (error) => {
         console.log('error');
       }
     );
-   
+
     this.service.ContactService(this.contact).subscribe(
       (data) => {
         console.log(this.contact);
@@ -155,48 +144,38 @@ onImageSelected(event: any): void {
     );
   }
 
-      selectedFile: File | null = null;
-       onFileSelected(event: any) {
-        this.selectedFile = event.target.files[0];
-      }
-      uploadFile() {
-        if (!this.selectedFile) {
-          return;
-        }
-        this.user_update.cv=this.selectedFile;
-        this.service.uploadCV(this.selectedFile).subscribe(
-          (response) => {
-            console.log('File uploaded successfully:', response);
-          },
-          (error) => {
-            console.error('File upload error:', error);
-            this.messageService.add({
-              severity: 'error',
-              summary: 'failed ! please check your cv format',
-              detail: 'Please check your cv format !!!',
-            });
-          }
-        );
-      }
-      
-      deleteCategory(CategoryId:number){
-        this.service.deleteCategory(CategoryId)
-        .subscribe(
-          data => {
-            console.log(data);
-            this.categories=this.service.getCategories();
-          },
-          error => console.log(error));
-    }
-    getRelatedSkiills(id:number){
-
-      }
-      
-      
-
-
-     
-
-  
-
+  selectedFile: File | null = null;
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
   }
+  uploadFile() {
+    if (!this.selectedFile) {
+      return;
+    }
+    this.user_update.cv = this.selectedFile;
+    this.service.uploadCV(this.selectedFile).subscribe(
+      (response) => {
+        console.log('File uploaded successfully:', response);
+      },
+      (error) => {
+        console.error('File upload error:', error);
+        this.messageService.add({
+          severity: 'error',
+          summary: 'failed ! please check your cv format',
+          detail: 'Please check your cv format !!!',
+        });
+      }
+    );
+  }
+
+  deleteCategory(CategoryId: number) {
+    this.service.deleteCategory(CategoryId).subscribe(
+      (data) => {
+        console.log(data);
+        this.categories = this.service.getCategories();
+      },
+      (error) => console.log(error)
+    );
+  }
+  getRelatedSkiills(id: number) {}
+}
