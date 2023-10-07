@@ -16,6 +16,7 @@ import { Cv } from '../types/cv';
 })
 export class ChangeInformationComponent implements OnInit {
   user_update = new UserUpdate();
+  password_update = new Password();
   msg = '';
   skill=new Skill();
   cv=new Cv();
@@ -23,17 +24,6 @@ export class ChangeInformationComponent implements OnInit {
   categories : Observable<any> | null = null;
   skills : Observable<any> | null = null;
   id!:number;
-  password_update: Password = {
-    oldPassword: '',
-    newPassword: ''
-  }; // Declare the type here
-
-  showPassword = false;
-
-  togglePasswordVisibility() {
-    this.showPassword = !this.showPassword;
-  }
-
 
 
   constructor(
@@ -61,7 +51,6 @@ export class ChangeInformationComponent implements OnInit {
         this.user_update.universityOrCompany=data.universityOrCompany;
         this.user_update.dateOfBirth=data.dateOfBirth;
         console.log(data);
-        
       },
       (error) => {
         console.log('Update is failed'), (this.msg = error.error);
