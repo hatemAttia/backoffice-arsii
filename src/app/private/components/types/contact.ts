@@ -1,7 +1,8 @@
 export class Contact{
 
+    userId!:number;
     url!:string;
-    urlLinkedin!:string;
+    platform!:string;
 
    
 }

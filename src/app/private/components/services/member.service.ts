@@ -12,36 +12,40 @@ import { Skill } from '../types/skill';
 export class MemberService {
   constructor(private http: HttpClient) {}
 
-  public uploadImage(data:FormData,id:number){
-    return this.http.post<any>('api/arsii/membre/password'+data,id);
+  public uploadImage(image:ImageData,id:number){
+    return this.http.post<any>('/api/arsii/admin/uploadImage'+image,id);
 
   }
   
   public updateMember(user:UserUpdate): Observable<any> {
-    return this.http.put<any>('api/arsii/auth/member',user);
+    return this.http.put<any>('api/arsii/admin',user);
   }
   public PasswordService(password: Password): Observable<any> {
-    return this.http.put<any>('api/arsii/member/password', password);
+    return this.http.put<any>('/api/arsii/admin/password', password);
   }
   public ContactService(contact: Contact): Observable<any> {
-    return this.http.post<any>('api/arsii/member/contact', contact);
+    return this.http.post<any>('/api/arsii/admin/contact',contact);
   }
   public getUserById(): Observable<any> {
     return this.http.get<any>('api/arsii/member/me');
   }
-    public getMe(): Observable<any> {
-      return this.http.get<any>('api/arsii/member/me');
+  public getUserByAdmin(): Observable<any> {
+    return this.http.get<any>('api/arsii/admin/me');
   }
-  public uploadCV(file: File, userId: number): Observable<any> {
-    const formData = new FormData();
-    formData.append('file', file);
+    public getMe(): Observable<any> {
+      return this.http.get<any>('api/arsii/admin/me');
+  }
+  public uploadCV(cv: File): Observable<any> {
   
-    return this.http.post<any>(`api/arsii/membre/uploadCV/${userId}`, formData);
+    return this.http.post<any>(`/api/arsii/file/uploadPDF`, cv);
   }
   
 
   public getCategories():Observable<any>{
     return 	this.http.get('api/arsii/admin/category' );
+  }
+  public deleteCategory(CategoryId:number) : Observable<any> {
+    return this.http.delete<any>('api/arsii/admin/category/' + CategoryId);
   }
   public getSkills():Observable<any>{
     return 	this.http.get('api/arsii/member/admin/competence' );

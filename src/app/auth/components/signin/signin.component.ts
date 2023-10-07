@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { User } from '../types/user';
 import { UserService } from '../../services/user.service';
 import { MessageService } from 'primeng/api';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-signin',
@@ -14,6 +15,7 @@ export class SigninComponent implements OnInit {
   msg = '';
   constructor(
     private router: Router,
+    private authService:AuthService,
     private service: UserService,
     private messageService: MessageService
   ) {}

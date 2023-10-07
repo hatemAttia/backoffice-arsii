@@ -12,4 +12,5 @@ export class UserUpdate {
   universityOrCompany!: string;
   office!:string;
   image!:string;
+  cv!:File;
 }

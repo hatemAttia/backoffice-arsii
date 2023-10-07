@@ -12,7 +12,7 @@ export class User {
   job!: string;
   universityOrCompany!: string;
   office!:string;
-  cv!:string;
-  image!:string;
+  cv!:File;
+  image!:File;
   
 }
