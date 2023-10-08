@@ -45,7 +45,6 @@
               "src/assets/js/chart-custom.js",
               "src/assets/js/slider.js",
               "src/assets/js/app.js",
-              "src/assets/js/add.js",
               "src/assets/vendor/moment.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
               "node_modules/jquery/dist/jquery.min.js"
