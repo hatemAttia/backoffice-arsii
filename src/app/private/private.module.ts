@@ -12,6 +12,9 @@ import { EventsComponent } from './components/events/events.component';
 import { EditEventComponent } from './components/events/edit-event/edit-event.component';
 import { AddEventComponent } from './components/events/add-event/add-event.component';
 import { MemberService } from './components/services/member.service';
+import { OpportunityComponent } from './components/opportunity/opportunity.component';
+import { AddOpportunityComponent } from './components/opportunity/add-opportunity/add-opportunity.component';
+import { EditOpportunityComponent } from './components/opportunity/edit-opportunity/edit-opportunity.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,9 @@ import { MemberService } from './components/services/member.service';
     EditEventComponent,
     AddEventComponent,
     ChangeInformationComponent,
+    OpportunityComponent,
+    AddOpportunityComponent,
+    EditOpportunityComponent,
   ],
   imports: [
     CommonModule,

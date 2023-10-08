@@ -6,6 +6,8 @@ import { FormationsComponent } from './components/formations/formations.componen
 import { EventsComponent } from './components/events/events.component';
 import { EditEventComponent } from './components/events/edit-event/edit-event.component';
 import { ChangeInformationComponent } from './components/change-information/change-information.component';
+import { OpportunityComponent } from './components/opportunity/opportunity.component';
+
 
 const routes: Routes = [
   {
@@ -19,6 +21,10 @@ const routes: Routes = [
      {
       path: 'formations',
       component: FormationsComponent
+     },
+     {
+      path: 'opportunity',
+      component: OpportunityComponent
      },
      {
      path: 'admin',
