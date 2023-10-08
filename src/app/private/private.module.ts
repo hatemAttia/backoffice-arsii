@@ -12,6 +12,7 @@ import { EventsComponent } from './components/events/events.component';
 import { EditEventComponent } from './components/events/edit-event/edit-event.component';
 import { AddEventComponent } from './components/events/add-event/add-event.component';
 import { MemberService } from './components/services/member.service';
+import { SkillsComponent } from './components/skills/skills.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { MemberService } from './components/services/member.service';
     EditEventComponent,
     AddEventComponent,
     ChangeInformationComponent,
+    SkillsComponent,
   ],
   imports: [
     CommonModule,
