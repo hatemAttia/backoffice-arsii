@@ -15,8 +15,8 @@ import { Cv } from '../types/cv';
   styleUrls: ['./change-information.component.scss'],
 })
 export class ChangeInformationComponent implements OnInit {
+  
   user_update = new UserUpdate();
-  password_update = new Password();
   msg = '';
   skill=new Skill();
   cv=new Cv();
@@ -24,6 +24,22 @@ export class ChangeInformationComponent implements OnInit {
   categories : Observable<any> | null = null;
   skills : Observable<any> | null = null;
   id!:number;
+  password_update = {
+    oldPassword: '',
+    newPassword: '',
+  };
+
+  showOldPassword = false;
+  showNewPassword = false;
+
+  toggleShowOldPassword() {
+    this.showOldPassword = !this.showOldPassword;
+  }
+
+  toggleShowNewPassword() {
+    this.showNewPassword = !this.showNewPassword;
+  }
+
 
 
   constructor(
@@ -58,14 +74,9 @@ export class ChangeInformationComponent implements OnInit {
     );
 
     this.categories=this.service.getCategories();
-    this.skills=this.service.getSkills();
-
-
-    
-
-    
+    this.skills=this.service.getSkills(); 
   }
- 
+  
 imageUrl: string = '11.png';
 
 onImageSelected(event: any): void {
@@ -98,6 +109,10 @@ onImageSelected(event: any): void {
       }
     );
   }
+
+
+
+  
   ChangePassword() {
     this.service.PasswordService(this.password_update).subscribe(
       (data) => {
@@ -118,16 +133,9 @@ onImageSelected(event: any): void {
     );
   }
   Contact(){
-    this.service.getUserById().subscribe(
-      (data) => {
-        this.contact.userId=data.id
-      },
-      (error) => {
-        console.log('error');
-      }
-    );
-   
-    this.service.ContactService(this.contact).subscribe(
+    
+        this.contact.userId=this.id;
+       this.service.ContactService(this.contact).subscribe(
       (data) => {
         console.log(this.contact);
         this.msg = 'Contact urls sended successfully';
@@ -168,8 +176,8 @@ onImageSelected(event: any): void {
         );
       }
       
-      deleteCategory(CategoryId:number){
-        this.service.deleteCategory(CategoryId)
+      deleteCategory(id:number){
+        this.service.deleteCategory(id)
         .subscribe(
           data => {
             console.log(data);
@@ -177,6 +185,16 @@ onImageSelected(event: any): void {
           },
           error => console.log(error));
     }
+    deleteskill(id:number){
+      this.service.deleteSkill(id)
+      .subscribe(
+        data => {
+          console.log(data);
+          this.skills=this.service.getSkills();
+        },
+        error => console.log(error));
+  }
+
     getRelatedSkiills(id:number){
 
       }
