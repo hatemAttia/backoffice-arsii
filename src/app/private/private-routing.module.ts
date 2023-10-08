@@ -9,7 +9,6 @@ import { ChangeInformationComponent } from './components/change-information/chan
 import { SkillsComponent } from './components/skills/skills.component';
 import { OpportunityComponent } from './components/opportunity/opportunity.component';
 
-
 const routes: Routes = [
   {
     path: '',
@@ -19,41 +18,34 @@ const routes: Routes = [
         path: 'skills',
         component: SkillsComponent,
       },
-     {
-      path: 'user-list',
-      component: UserListComponent,
-     },
-     {
-      path: 'formations',
-      component: FormationsComponent
-     },
-     {
-      path: 'opportunity',
-      component: OpportunityComponent
-     },
-     {
-     path: 'admin',
-     component: FormationsComponent
-     },
-     {
-      path: 'events',
-      component: EventsComponent
-     },
-     {
-      path: 'events/:id',
-      component: EditEventComponent
-     },
-     {
-      path: 'change',
-      component: ChangeInformationComponent
-     },
-     
-     {
-      path: '**',
-      redirectTo: '',
-     },
-    ]
-  },
+      {
+        path: 'user-list',
+        component: UserListComponent,
+      },
+      {
+        path: 'formations',
+        component: FormationsComponent,
+      },
+      {
+        path: 'opportunity',
+        component: OpportunityComponent,
+      },
+      {
+        path: 'admin',
+        component: FormationsComponent,
+      },
+      {
+        path: 'events',
+        component: EventsComponent,
+      },
+      {
+        path: 'events/:id',
+        component: EditEventComponent,
+      },
+      {
+        path: 'change',
+        component: ChangeInformationComponent,
+      },
 
       {
         path: '**',
