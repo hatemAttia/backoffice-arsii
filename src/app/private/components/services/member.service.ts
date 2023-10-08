@@ -86,4 +86,7 @@ export class MemberService {
   public addSkills(comp: Skill): Observable<any> {
     return this.http.post('api/arsii/member/usercompetences', comp);
   }
+  public getAllOpportunity(): Observable<any> {
+    return this.http.get<any>('api/arsii/admin/opportunity/');
+  }
 }

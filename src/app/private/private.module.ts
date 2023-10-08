@@ -13,6 +13,9 @@ import { EditEventComponent } from './components/events/edit-event/edit-event.co
 import { AddEventComponent } from './components/events/add-event/add-event.component';
 import { MemberService } from './components/services/member.service';
 import { SkillsComponent } from './components/skills/skills.component';
+import { OpportunityComponent } from './components/opportunity/opportunity.component';
+import { AddOpportunityComponent } from './components/opportunity/add-opportunity/add-opportunity.component';
+import { EditOpportunityComponent } from './components/opportunity/edit-opportunity/edit-opportunity.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,9 @@ import { SkillsComponent } from './components/skills/skills.component';
     AddEventComponent,
     ChangeInformationComponent,
     SkillsComponent,
+    OpportunityComponent,
+    AddOpportunityComponent,
+    EditOpportunityComponent,
   ],
   imports: [
     CommonModule,

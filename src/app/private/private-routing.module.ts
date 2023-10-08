@@ -7,6 +7,8 @@ import { EventsComponent } from './components/events/events.component';
 import { EditEventComponent } from './components/events/edit-event/edit-event.component';
 import { ChangeInformationComponent } from './components/change-information/change-information.component';
 import { SkillsComponent } from './components/skills/skills.component';
+import { OpportunityComponent } from './components/opportunity/opportunity.component';
+
 
 const routes: Routes = [
   {
@@ -14,33 +16,44 @@ const routes: Routes = [
     component: BaseComponent,
     children: [
       {
-        path: 'user-list',
-        component: UserListComponent,
-      },
-      {
-        path: 'formations',
-        component: FormationsComponent,
-      },
-      {
-        path: 'admin',
-        component: FormationsComponent,
-      },
-      {
-        path: 'events',
-        component: EventsComponent,
-      },
-      {
-        path: 'events/:id',
-        component: EditEventComponent,
-      },
-      {
-        path: 'change',
-        component: ChangeInformationComponent,
-      },
-      {
         path: 'skills',
         component: SkillsComponent,
       },
+     {
+      path: 'user-list',
+      component: UserListComponent,
+     },
+     {
+      path: 'formations',
+      component: FormationsComponent
+     },
+     {
+      path: 'opportunity',
+      component: OpportunityComponent
+     },
+     {
+     path: 'admin',
+     component: FormationsComponent
+     },
+     {
+      path: 'events',
+      component: EventsComponent
+     },
+     {
+      path: 'events/:id',
+      component: EditEventComponent
+     },
+     {
+      path: 'change',
+      component: ChangeInformationComponent
+     },
+     
+     {
+      path: '**',
+      redirectTo: '',
+     },
+    ]
+  },
 
       {
         path: '**',
