@@ -52,7 +52,7 @@
             </div>
           </div>
           <div class="card-body">
-            <form #Changeform="ngForm" (ngSubmit)="ChangeUser()">
+            <form #Changeform="ngForm">
               <div class="form-group row align-items-center">
                 <label for="image-upload" class="col-md-3 col-form-label"
                   >Profile Image</label
@@ -61,18 +61,21 @@
                   <div class="profile-img-edit">
                     <div class="crm-profile-img-edit">
                       <img
+                        *ngIf="!user_update.image"
                         class="crm-profile-pic rounded-circle avatar-100"
                         src="../assets/images/user/11.png"
                         alt="profile-pic"
                       />
-                      <div class="image-path">
-                        <span>{{ imageUrl }}</span>
-                      </div>
-                      <div class="crm-p-image bg-primary">
-                        <label
-                          for="image-upload"
-                          class="las la-pen upload-button"
-                        ></label>
+                      <img
+                        *ngIf="user_update.image"
+                        class="crm-profile-pic rounded-circle avatar-100"
+                        [src]="'/api/arsii/file/img/' + user_update.image"
+                      />
+                      <div class="image-path"></div>
+                      <div class="crm-p-image">
+                        <label for="image-upload">
+                          <img src="assets\images\product\02.png" width="35"
+                        /></label>
                         <input
                           id="image-upload"
                           class="file-upload"
@@ -174,6 +177,7 @@
                   <input
                     class="form-control"
                     id="dob"
+                    type="date"
                     name="dob"
                     [(ngModel)]="user_update.dateOfBirth"
                     required
@@ -229,13 +233,26 @@
                     </div>
                   </div>
                   <div class="card-body">
+                    <img
+                      (click)="openPdf(user_update.cv)"
+                      src="assets\images\téléchargement.png"
+                      width="50"
+                      style="cursor: pointer"
+                      *ngIf="user_update.cv"
+                    />
+
                     <input
+                      class="mx-5"
                       type="file"
                       (change)="onFileSelected($event)"
                       [(ngModel)]="cv.file"
                       name="cv"
                     />
-                    <button (click)="uploadFile()" [disabled]="!selectedFile">
+                    <button
+                      (click)="uploadFile()"
+                      class="btn btn-primary px-5"
+                      [disabled]="!selectedFile"
+                    >
                       Upload CV
                     </button>
                   </div>
@@ -246,6 +263,7 @@
                 [disabled]="Changeform.form.invalid"
                 type="submit"
                 class="btn btn-primary mr-2"
+                (click)="ChangeUser()"
               >
                 Submit
               </button>
@@ -335,7 +353,7 @@
             </div>
           </div>
           <div class="card-body">
-            <form #Changeform="ngForm" (ngSubmit)="Contact()">
+            <form #Changeform="ngForm">
               <div class="form-group">
                 <label for="cno">Contact type:</label>
                 <input
@@ -367,7 +385,13 @@
                 />
               </div>
 
-              <button type="submit" class="btn btn-primary mr-2">Submit</button>
+              <button
+                type="submit"
+                (click)="Contact()"
+                class="btn btn-primary mr-2"
+              >
+                Submit
+              </button>
             </form>
             <br />
           </div>
