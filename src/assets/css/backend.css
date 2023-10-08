@@ -29970,17 +29970,17 @@ ul.iq-contact-rest li a p {
 .crm-p-image {
   position: absolute;
   top: auto;
-  left: 69px;
+  left: 90px;
   bottom: -9px;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   border-radius: 50%;
-  height: 35px;
-  width: 35px;
+  width: 45px;
+  height: 40px;
   text-align: center;
   font-size: 12px;
   line-height: 30px;
   cursor: pointer;
-  border: 5px solid #fff;
+  border: 5px solid green;
 }
 
 .card-profile {

@@ -53,6 +53,12 @@ export class ChangeInformationComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.displayCurrentUSer();
+    this.categories = this.service.getCategories();
+    this.skills = this.service.getSkills();
+  }
+
+  displayCurrentUSer() {
     this.service.getUserById().subscribe(
       (data) => {
         console.log(this.user_update);
@@ -67,6 +73,8 @@ export class ChangeInformationComponent implements OnInit {
         this.user_update.phoneNumber = data.phoneNumber;
         this.user_update.office = data.office;
         this.user_update.region = data.region;
+        this.user_update.cv = data.cv;
+        this.user_update.image = data.image;
         this.user_update.universityOrCompany = data.universityOrCompany;
         this.user_update.dateOfBirth = data.dateOfBirth;
         console.log(data);
@@ -75,11 +83,7 @@ export class ChangeInformationComponent implements OnInit {
         console.log('Update is failed'), (this.msg = error.error);
       }
     );
-
-    this.categories = this.service.getCategories();
-    this.skills = this.service.getSkills();
   }
-
   imageUrl: string = '11.png';
 
   onImageSelected(event: any): void {
@@ -88,13 +92,36 @@ export class ChangeInformationComponent implements OnInit {
       // Extract the file name from the selected file
       const fileName = file.name;
       this.imageUrl = fileName;
+
+      this.user_update.image = file;
+      this.service.updateImageUser(this.user_update).subscribe(
+        (response) => {
+          this.displayCurrentUSer();
+          this.selectedFile = null;
+          this.messageService.add({
+            severity: 'success',
+            summary: 'User CV is Updated Successfully',
+            detail: 'User CV is Updated Successfully !!!',
+          });
+
+          console.log('File uploaded successfully:', response);
+        },
+        (error) => {
+          console.error('File upload error:', error);
+          this.messageService.add({
+            severity: 'error',
+            summary: 'failed ! please check your cv format',
+            detail: 'Please check your cv format !!!',
+          });
+        }
+      );
     }
   }
 
   ChangeUser() {
     this.service.updateMember(this.user_update).subscribe(
       (data) => {
-        console.log(this.user_update);
+        console.log(data);
         this.msg = 'Updated successfully';
         this.messageService.add({
           severity: 'success',
@@ -103,7 +130,7 @@ export class ChangeInformationComponent implements OnInit {
         });
       },
       (error) => {
-        console.log('Update is failed'), (this.msg = error.error);
+        console.log('Update is failed', error), (this.msg = error.error);
         this.messageService.add({
           severity: 'error',
           summary: 'failed ! please check your information',
@@ -144,7 +171,7 @@ export class ChangeInformationComponent implements OnInit {
         console.log('error');
       }
     );
-
+    this.contact.id = this.id;
     this.service.ContactService(this.contact).subscribe(
       (data) => {
         console.log(this.contact);
@@ -176,19 +203,32 @@ export class ChangeInformationComponent implements OnInit {
       return;
     }
     this.user_update.cv = this.selectedFile;
-    this.service.uploadCV(this.selectedFile).subscribe(
-      (response) => {
-        console.log('File uploaded successfully:', response);
-      },
-      (error) => {
-        console.error('File upload error:', error);
-        this.messageService.add({
-          severity: 'error',
-          summary: 'failed ! please check your cv format',
-          detail: 'Please check your cv format !!!',
-        });
-      }
-    );
+    this.service
+      .updateUserCV({
+        ...this.user_update,
+        file: this.selectedFile,
+      })
+      .subscribe(
+        (response) => {
+          this.displayCurrentUSer();
+          this.selectedFile = null;
+          this.messageService.add({
+            severity: 'success',
+            summary: 'User CV is Updated Successfully',
+            detail: 'User CV is Updated Successfully !!!',
+          });
+
+          console.log('File uploaded successfully:', response);
+        },
+        (error) => {
+          console.error('File upload error:', error);
+          this.messageService.add({
+            severity: 'error',
+            summary: 'failed ! please check your cv format',
+            detail: 'Please check your cv format !!!',
+          });
+        }
+      );
   }
 
   deleteCategory(CategoryId: number) {
@@ -201,4 +241,8 @@ export class ChangeInformationComponent implements OnInit {
     );
   }
   getRelatedSkiills(id: number) {}
+
+  openPdf(cv: any) {
+    window.open('/api/arsii/file/PDF/' + cv, '_blank');
+  }
 }
