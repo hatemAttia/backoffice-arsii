@@ -1,9 +1,18 @@
 export interface User {
-  id: number;
+  id?: number;
   userName: string;
+  firstName: string;
+  lastName: string;
   email: string;
-  phoneNumber: number;
+  phoneNumber: string;
   region: string;
-  profileImage: string;
+  image: string;
   status: boolean;
+  role: string;
+  dateOfBirth: Date;
+  gender: string;
+  job: string;
+  office: string;
+  password: string;
+  universityOrCompany: string;
 }

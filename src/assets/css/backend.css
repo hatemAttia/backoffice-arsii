@@ -15250,7 +15250,7 @@ body.tab-horizontal .iq-footer {
 }
 
 /*
- * Background color 
+ * Background color
  */
 .bg-blue {
   color: #fff !important;
@@ -24943,7 +24943,7 @@ g[aria-describedby="id-22-description"] {
 
 .content-page {
   overflow: hidden;
-  margin-left: 260px;
+  margin-left: 130px;
   padding: 105px 15px 0px;
   min-height: 100vh;
   -webkit-transition: all 0.3s ease-in-out;
@@ -24951,6 +24951,20 @@ g[aria-describedby="id-22-description"] {
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
+}
+
+@media (min-width: 1300px) {
+  .content-page-xl {
+    overflow: hidden;
+    margin-left: 260px;
+    padding: 105px 15px 0px;
+    min-height: 100vh;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
 }
 
 @media (min-width: 1300px) {
