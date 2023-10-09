@@ -4,8 +4,6 @@ import { PrivateRoutingModule } from './private-routing.module';
 import { BaseComponent } from './components/base/base.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { UserListComponent } from './components/user-list/user-list.component';
-import { FormationsComponent } from './components/formations/formations.component';
-import { AddFormationModalComponent } from './components/formations/add-formation-modal/add-formation-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChangeInformationComponent } from './components/change-information/change-information.component';
 import { EventsComponent } from './components/events/events.component';
@@ -16,14 +14,15 @@ import { SkillsComponent } from './components/skills/skills.component';
 import { OpportunityComponent } from './components/opportunity/opportunity.component';
 import { AddOpportunityComponent } from './components/opportunity/add-opportunity/add-opportunity.component';
 import { EditOpportunityComponent } from './components/opportunity/edit-opportunity/edit-opportunity.component';
+import { EditUserComponent } from './components/user-list/edit-user/edit-user.component';
+import { AddUserComponent } from './components/user-list/add-user/add-user.component';
+import { EventDetailsComponent } from './components/events/event-details/event-details.component';
 
 @NgModule({
   declarations: [
     BaseComponent,
     SidenavComponent,
     UserListComponent,
-    FormationsComponent,
-    AddFormationModalComponent,
     EventsComponent,
     EditEventComponent,
     AddEventComponent,
@@ -32,6 +31,9 @@ import { EditOpportunityComponent } from './components/opportunity/edit-opportun
     OpportunityComponent,
     AddOpportunityComponent,
     EditOpportunityComponent,
+    EditUserComponent,
+    AddUserComponent,
+    EventDetailsComponent,
   ],
   imports: [
     CommonModule,
