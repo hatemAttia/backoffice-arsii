@@ -1,4 +1,7 @@
+import { EventService } from './../event.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Event } from 'interfaces/event';
 
 @Component({
   selector: 'app-add-event',
@@ -7,13 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddEventComponent implements OnInit {
 
-  constructor() { }
+  newEvent: any = {
+
+  };
+
+  constructor(private eventService: EventService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  addEvent() {
-    //add event code
+  onSubmit(eventData: Event) {
+    this.eventService.addEvent({...eventData, date: new Date(eventData.date)}).subscribe((response) => {
+      console.log('response', response);
+      if(response) {
+        this.router.navigate(['/private/events']);
+      }
+    })
+  }
+
+  goBack() {
+    this.router.navigate(['/private/events']);
   }
 
 }
