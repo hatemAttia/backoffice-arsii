@@ -8,18 +8,18 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./edit-event.component.scss'],
 })
 export class EditEventComponent implements OnInit {
-  eventId: number;
+  eventId: number = 0;
   event: any = {};
+  imageEvent: any;
 
   constructor(
     private route: ActivatedRoute,
     private eventService: EventService,
     private router: Router
-  ) {
-    this.eventId = Number(this.route.snapshot.paramMap.get('id'));
-  }
+  ) {}
 
   ngOnInit(): void {
+    this.eventId = Number(this.route.snapshot.paramMap.get('id'));
     this.getEventById(this.eventId);
   }
 
@@ -28,24 +28,33 @@ export class EditEventComponent implements OnInit {
       let date_only = data.date.split('T')[0];
       data.date = date_only;
       this.event = data;
+      this.imageEvent = data.image;
+      this.event.image = null;
     });
   }
 
   updateEvent(eventData: any) {
     this.eventService
-      .updateEvent(this.eventId, {
+      .updateEventImg(this.eventId, {
         ...eventData,
         date: new Date(eventData.date),
         maxOfParticipants: Number(eventData.maxOfParticipants),
         price: Number(eventData.price),
+        image: this.selectedFile,
       })
-      .subscribe((data) => {
-        console.log(data);
-        this.router.navigate(['/private/events']);
+      .subscribe((response) => {
+        if (response) {
+          this.router.navigate(['/private/events']);
+        }
       });
   }
 
   goBack() {
     this.router.navigate(['/private/events']);
+  }
+
+  selectedFile: File | null = null;
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
   }
 }
