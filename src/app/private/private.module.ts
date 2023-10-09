@@ -15,6 +15,9 @@ import { MemberService } from './components/services/member.service';
 import { OpportunityComponent } from './components/opportunity/opportunity.component';
 import { AddOpportunityComponent } from './components/opportunity/add-opportunity/add-opportunity.component';
 import { EditOpportunityComponent } from './components/opportunity/edit-opportunity/edit-opportunity.component';
+import { AddMediaComponent } from './components/medias/add-media/add-media.component';
+import { EditMediaComponent } from './components/medias/edit-media/edit-media.component';
+import { MediasComponent } from './components/medias/medias.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,9 @@ import { EditOpportunityComponent } from './components/opportunity/edit-opportun
     OpportunityComponent,
     AddOpportunityComponent,
     EditOpportunityComponent,
+    AddMediaComponent,
+    MediasComponent,
+    EditMediaComponent,
   ],
   imports: [
     CommonModule,

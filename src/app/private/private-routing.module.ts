@@ -7,6 +7,7 @@ import { EventsComponent } from './components/events/events.component';
 import { EditEventComponent } from './components/events/edit-event/edit-event.component';
 import { ChangeInformationComponent } from './components/change-information/change-information.component';
 import { OpportunityComponent } from './components/opportunity/opportunity.component';
+import { MediasComponent } from './components/medias/medias.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,10 @@ const routes: Routes = [
      {
       path: 'opportunity',
       component: OpportunityComponent
+     },
+     {
+      path: 'media',
+      component: MediasComponent
      },
      {
      path: 'admin',
