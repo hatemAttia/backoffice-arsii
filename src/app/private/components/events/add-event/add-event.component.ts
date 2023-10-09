@@ -6,30 +6,32 @@ import { Event } from 'interfaces/event';
 @Component({
   selector: 'app-add-event',
   templateUrl: './add-event.component.html',
-  styleUrls: ['./add-event.component.scss']
+  styleUrls: ['./add-event.component.scss'],
 })
 export class AddEventComponent implements OnInit {
+  newEvent: any = {};
 
-  newEvent: any = {
+  constructor(private eventService: EventService, private router: Router) {}
 
-  };
-
-  constructor(private eventService: EventService, private router: Router) { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onSubmit(eventData: Event) {
-    this.eventService.addEvent({...eventData, date: new Date(eventData.date)}).subscribe((response) => {
-      console.log('response', response);
-      if(response) {
-        this.router.navigate(['/private/events']);
-      }
-    })
+    this.eventService
+      .addEvent({
+        ...eventData,
+        date: new Date(eventData.date),
+        maxOfParticipants: Number(eventData.maxOfParticipants),
+        price: Number(eventData.price),
+      })
+      .subscribe((response) => {
+        console.log('response', response);
+        if (response) {
+          this.router.navigate(['/private/events']);
+        }
+      });
   }
 
   goBack() {
     this.router.navigate(['/private/events']);
   }
-
 }
