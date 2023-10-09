@@ -1,19 +1,23 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Event } from 'interfaces/event';
-import { Observable } from 'rxjs';
+import { Observable, mergeMap } from 'rxjs';
+import { MemberService } from '../services/member.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EventService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(
+    private httpClient: HttpClient,
+    private membreService: MemberService
+  ) {}
 
   private baseUrl = '/api/arsii/';
 
-  addEvent(eventData: Event): Observable<any> {
-    return this.httpClient.post(`${this.baseUrl}admin/event`, eventData);
-  }
+  // addEvent(eventData: Event): Observable<any> {
+  //   return this.httpClient.post(`${this.baseUrl}admin/event`, eventData);
+  // }
 
   getAllEvents(): Observable<any> {
     return this.httpClient.get(`${this.baseUrl}admin/event`);
@@ -35,5 +39,17 @@ export class EventService {
     return this.httpClient.delete(this.baseUrl + 'admin/event/' + id, {
       responseType: 'text',
     }); //`${this.baseUrl}admin/${id}`
+  }
+
+  addEvent(data: any) {
+    return this.membreService.uploadImage(data.image).pipe(
+      mergeMap((result: any) => {
+        const reqData = {
+          ...data,
+          image: result.file,
+        };
+        return this.httpClient.post(`${this.baseUrl}admin/event`, reqData);
+      })
+    );
   }
 }
