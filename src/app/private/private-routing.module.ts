@@ -34,11 +34,6 @@ const routes: Routes = [
       path: 'events/:id',
       component: EditEventComponent
      },
-     
-     {
-      path: '**',
-      redirectTo: '',
-     },
       {
         path: 'skills',
         component: SkillsComponent,
@@ -67,11 +62,6 @@ const routes: Routes = [
         path: 'addEvent',
         component: AddEventComponent,
       },
-      // {
-      //   path: 'editEvent/:id',
-      //   component: EditEventComponent,
-      // },
-
       {
         path: '**',
         redirectTo: '',
