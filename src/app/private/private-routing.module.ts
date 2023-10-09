@@ -53,14 +53,10 @@ const routes: Routes = [
         path: 'addEvent',
         component: AddEventComponent,
       },
-      // {
-      //   path: 'editEvent/:id',
-      //   component: EditEventComponent,
-      // },
 
       {
         path: '**',
-        redirectTo: '',
+        redirectTo: 'events',
       },
     ],
   },
