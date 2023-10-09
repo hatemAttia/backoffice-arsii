@@ -22,6 +22,7 @@ export class AddEventComponent implements OnInit {
         date: new Date(eventData.date),
         maxOfParticipants: Number(eventData.maxOfParticipants),
         price: Number(eventData.price),
+        image: this.selectedFile,
       })
       .subscribe((response) => {
         console.log('response', response);
@@ -33,5 +34,10 @@ export class AddEventComponent implements OnInit {
 
   goBack() {
     this.router.navigate(['/private/events']);
+  }
+
+  selectedFile: File | null = null;
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
   }
 }
