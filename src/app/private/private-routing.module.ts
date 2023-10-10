@@ -12,6 +12,7 @@ import { MediasComponent } from './components/medias/medias.component';
 import { EditUserComponent } from './components/user-list/edit-user/edit-user.component';
 import { AddUserComponent } from './components/user-list/add-user/add-user.component';
 import { AddEventComponent } from './components/events/add-event/add-event.component';
+import { PartenairesComponent } from './components/partenaire/partenaire.component';
 
 const routes: Routes = [
   {
@@ -61,6 +62,10 @@ const routes: Routes = [
       {
         path: 'addEvent',
         component: AddEventComponent,
+      },
+      {
+        path: 'partenaire',
+        component: PartenairesComponent,
       },
       {
         path: '**',
