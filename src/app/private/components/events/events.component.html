@@ -45,6 +45,7 @@
         class="d-flex align-items-center justify-content-between mb-4"
         data-target="#details-modal"
         data-toggle="modal"
+        style="min-height: 240px"
       >
         <img
           *ngIf="event.image"
@@ -54,7 +55,7 @@
         />
         <img
           *ngIf="!event.image"
-          src="../../../../assets/images/insert-image.png"
+          src="assets/images/insert-image.png"
           alt=""
           class="event-image"
         />
