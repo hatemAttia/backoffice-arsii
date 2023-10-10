@@ -8,7 +8,7 @@
       </div>
       <div class="card-body">
         <div class="table-responsive">
-          <div class="row justify-content-between">
+          <!-- <div class="row justify-content-between">
             <div class="col-sm-6 col-md-6">
               <div id="user_list_datatable_info" class="dataTables_filter">
                 <form class="mr-3 position-relative">
@@ -24,7 +24,7 @@
                 </form>
               </div>
             </div>
-          </div>
+          </div> -->
           <div class="row">
             <div class="col-lg-12">
               <div class="card">
@@ -42,15 +42,6 @@
                       >
                         Add Media
                       </a>
-                      <a
-                        href="#"
-                        class="btn btn-success mx-2"
-                        data-target="#edit-media-modal"
-                        data-toggle="modal"
-                      >
-                        Edit Media
-                      </a>
-                      <button class="btn btn-secondary mx-2">Delete</button>
                     </div>
                   </div>
                 </div>
@@ -62,7 +53,7 @@
               data-toggle-extra="tab-content"
             >
               <div class="row">
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-4 col-md-6" *ngFor="let item of medias">
                   <div class="card card-block card-stretch card-height">
                     <div class="card-body">
                       <div class="text-end">
@@ -82,10 +73,11 @@
                               class="dropdown-item"
                               data-target="#edit-media-modal"
                               data-toggle="modal"
+                              (click)="selectMedia(item)"
                             >
                               <i class="ri-edit-2-line mr-2"></i>Edit</a
                             >
-                            <a class="dropdown-item" href="#"
+                            <a class="dropdown-item" (click)="deleteMedia(item)"
                               ><i class="ri-delete-bin-5-line mr-2"></i
                               >Delete</a
                             >
@@ -97,23 +89,42 @@
                       >
                         <img
                           src="assets/images/insert-image.png"
-                          alt=""
+                          class="event-image"
+                          style="min-height: 240px"
+                          *ngIf="!item.image"
+                        />
+                        <img
+                          *ngIf="item.image"
+                          [src]="'/api/arsii/file/img/' + item.image"
+                          style="min-height: 240px"
                           class="event-image"
                         />
                       </div>
-                      <h5 class="mb-1">Offre de stage PFA</h5>
+                      <h5 class="mb-1">{{ item.title }}</h5>
                       <p class="mb-3">
-                        Nous vous proposones une offre de stage : poste du
-                        developpeur web junior pour un stage de 3 mois.
+                        {{ item.description }}
                       </p>
                       <div class="pt-3 border-top">
                         <p class="mb-1">
-                          <i class="ri-map-pin-line"></i> ARSII Sousse, Sahloul
-                          4
+                          <i class="ri-map-pin-line"></i>
+                          {{ item.type }}
                         </p>
                         <div class="d-flex justify-content-between mb-1">
                           <span>
-                            <i class="ri-calendar-2-line"></i> 16 Octobre 2023
+                            <i class="ri-calendar-2-line"></i>
+                            {{ item.createdAt | date }}
+                          </span>
+                          <span class="d-flex">
+                            <a
+                              tabindex="0"
+                              href="{{ item.urlPost }}"
+                              role="button"
+                              data-toggle="popover"
+                              data-bs-trigger="focus"
+                              data-bs-content="Number of participants"
+                            >
+                              url <i class="ri-question-line ml-1"></i>
+                            </a>
                           </span>
                         </div>
                       </div>
@@ -127,6 +138,9 @@
       </div>
     </div>
   </div>
+  <app-add-media (customEvent)="addmediaCheck($event)"></app-add-media>
+  <app-edit-media
+    [media]="selectedMedia"
+    (customEvent)="editmediaCheck($event)"
+  ></app-edit-media>
 </div>
-<app-add-media></app-add-media>
-<app-edit-media></app-edit-media>
