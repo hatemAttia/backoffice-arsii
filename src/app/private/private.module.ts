@@ -20,6 +20,9 @@ import { MediasComponent } from './components/medias/medias.component';
 import { EditUserComponent } from './components/user-list/edit-user/edit-user.component';
 import { AddUserComponent } from './components/user-list/add-user/add-user.component';
 import { EventDetailsComponent } from './components/events/event-details/event-details.component';
+import { EditPartenaireComponent } from './components/partenaire/edit-partenaire/edit-partenaire.component';
+import { AddPartenaireComponent } from './components/partenaire/add-partenaire/add.partenaire.component';
+import { PartenairesComponent } from './components/partenaire/partenaire.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,9 @@ import { EventDetailsComponent } from './components/events/event-details/event-d
     EditUserComponent,
     AddUserComponent,
     EventDetailsComponent,
+    EditPartenaireComponent,
+    AddPartenaireComponent,
+    PartenairesComponent,
   ],
   imports: [
     CommonModule,
