@@ -15,7 +15,8 @@
                     <form #Signupform="ngForm" (ngSubmit)="SignupUser()">
                       <div class="row">
                         <div class="col-lg-6">
-                          <div class="floating-label form-group">
+                          <div class="form-group">
+                            <label>First Name</label>
                             <input
                               class="floating-input form-control"
                               type="text"
@@ -27,11 +28,11 @@
                                 fname.invalid && fname.touched
                               "
                             />
-                            <label>First Name</label>
                           </div>
                         </div>
                         <div class="col-lg-6">
-                          <div class="floating-label form-group">
+                          <div class="form-group">
+                            <label>Last Name</label>
                             <input
                               class="floating-input form-control"
                               type="text"
@@ -43,13 +44,13 @@
                                 lname.invalid && lname.touched
                               "
                             />
-                            <label>Last Name</label>
                           </div>
                         </div>
                         <br />
 
                         <div class="col-lg-6">
-                          <div class="floating-label form-group">
+                          <div class="form-group">
+                            <label>User Name</label>
                             <input
                               class="floating-input form-control"
                               type="text"
@@ -61,12 +62,12 @@
                                 uname.invalid && uname.touched
                               "
                             />
-                            <label>User Name</label>
                           </div>
                         </div>
 
                         <div class="col-lg-6">
-                          <div class="floating-label form-group">
+                          <div class="form-group">
+                            <label>Email</label>
                             <input
                               class="floating-input form-control"
                               type="email"
@@ -78,11 +79,11 @@
                                 email.invalid && email.touched
                               "
                             />
-                            <label>Email</label>
                           </div>
                         </div>
                         <div class="col-lg-6">
-                          <div class="floating-label form-group">
+                          <div class="form-group">
+                            <label>Phone No.</label>
                             <input
                               class="floating-input form-control"
                               type="text"
@@ -94,11 +95,11 @@
                                 phone.invalid && phone.touched
                               "
                             />
-                            <label>Phone No.</label>
                           </div>
                         </div>
                         <div class="col-lg-6">
-                          <div class="floating-label form-group">
+                          <div class="form-group">
+                            <label>Region</label>
                             <input
                               class="floating-input form-control"
                               type="text"
@@ -110,11 +111,11 @@
                                 region.invalid && region.touched
                               "
                             />
-                            <label>Region</label>
                           </div>
                         </div>
                         <div class="col-lg-12">
-                          <div class="floating-label form-group">
+                          <div class="form-group">
+                            <label>University or company</label>
                             <input
                               class="floating-input form-control"
                               type="text"
@@ -124,11 +125,11 @@
                               #univ="ngModel"
                               [class.is-invalid]="univ.invalid && univ.touched"
                             />
-                            <label>University or company</label>
                           </div>
                         </div>
                         <div class="col-lg-6">
-                          <div class="floating-label form-group">
+                          <div class="form-group">
+                            <label>Job</label>
                             <input
                               class="floating-input form-control"
                               type="text"
@@ -138,7 +139,6 @@
                               #job="ngModel"
                               [class.is-invalid]="job.invalid && job.touched"
                             />
-                            <label>Job</label>
                           </div>
                         </div>
                         <div class="form-group col-lg-6">
@@ -187,7 +187,8 @@
                         </div>
 
                         <div class="col-lg-6">
-                          <div class="floating-label form-group">
+                          <div class="form-group">
+                            <label>Date Of Birth</label>
                             <input
                               class="floating-input form-control"
                               type="date"
@@ -199,11 +200,11 @@
                                 birth.invalid && birth.touched
                               "
                             />
-                            <label>Date Of Birth</label>
                           </div>
                         </div>
                         <div class="col-lg-6">
-                          <div class="floating-label form-group">
+                          <div class="form-group">
+                            <label>Password</label>
                             <input
                               class="floating-input form-control"
                               type="password"
@@ -215,11 +216,11 @@
                                 password.invalid && password.touched
                               "
                             />
-                            <label>Password</label>
                           </div>
                         </div>
                         <div class="col-lg-6">
-                          <div class="floating-label form-group">
+                          <div class="form-group">
+                            <label>Office</label>
                             <select
                               class="floating-input form-control"
                               id=""
@@ -238,7 +239,6 @@
                                 {{ office?.title }}
                               </option>
                             </select>
-                            <label>Office</label>
                           </div>
                         </div>
                       </div>
