@@ -1,4 +1,4 @@
-import { EventService } from './event.service';
+import { EventService } from '../services/event.service';
 import { Popover } from 'bootstrap';
 import { Component, OnInit } from '@angular/core';
 import { Event } from 'interfaces/event';

@@ -14,9 +14,15 @@ import { SkillsComponent } from './components/skills/skills.component';
 import { OpportunityComponent } from './components/opportunity/opportunity.component';
 import { AddOpportunityComponent } from './components/opportunity/add-opportunity/add-opportunity.component';
 import { EditOpportunityComponent } from './components/opportunity/edit-opportunity/edit-opportunity.component';
+import { AddMediaComponent } from './components/medias/add-media/add-media.component';
+import { EditMediaComponent } from './components/medias/edit-media/edit-media.component';
+import { MediasComponent } from './components/medias/medias.component';
 import { EditUserComponent } from './components/user-list/edit-user/edit-user.component';
 import { AddUserComponent } from './components/user-list/add-user/add-user.component';
 import { EventDetailsComponent } from './components/events/event-details/event-details.component';
+import { EditPartenaireComponent } from './components/partenaire/edit-partenaire/edit-partenaire.component';
+import { AddPartenaireComponent } from './components/partenaire/add-partenaire/add.partenaire.component';
+import { PartenairesComponent } from './components/partenaire/partenaire.component';
 
 @NgModule({
   declarations: [
@@ -31,9 +37,15 @@ import { EventDetailsComponent } from './components/events/event-details/event-d
     OpportunityComponent,
     AddOpportunityComponent,
     EditOpportunityComponent,
+    AddMediaComponent,
+    MediasComponent,
+    EditMediaComponent,
     EditUserComponent,
     AddUserComponent,
     EventDetailsComponent,
+    EditPartenaireComponent,
+    AddPartenaireComponent,
+    PartenairesComponent,
   ],
   imports: [
     CommonModule,

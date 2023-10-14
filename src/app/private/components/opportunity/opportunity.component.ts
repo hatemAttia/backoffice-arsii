@@ -2,32 +2,79 @@ import { Component, OnInit } from '@angular/core';
 import { MemberService } from '../services/member.service';
 import { Opportunity } from '../types/opportunity';
 import { Popover } from 'bootstrap';
+import { OpportunityService } from '../services/opportunity.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-opportunity',
   templateUrl: './opportunity.component.html',
-  styleUrls: ['./opportunity.component.scss']
+  styleUrls: ['./opportunity.component.scss'],
 })
 export class OpportunityComponent implements OnInit {
-
-  opportunities: Opportunity[] = [];
-
-  constructor(private memberService: MemberService) { }
+  opportunities: any[] = [];
+  selectedOpportunity = {
+    company: '',
+    description: '',
+    image: '',
+    title: '',
+    type: 'Summer_internship',
+  };
+  constructor(
+    private opportunityService: OpportunityService,
+    private messageService: MessageService
+  ) {}
 
   ngOnInit(): void {
-    Array.from(document.querySelectorAll('a[data-toggle="popover"]'))
-    .forEach(popverMode => new Popover(popverMode));
+    Array.from(document.querySelectorAll('a[data-toggle="popover"]')).forEach(
+      (popverMode) => new Popover(popverMode)
+    );
     this.getAllOpportunity();
   }
 
-  private getAllOpportunity(){
-    this.memberService.getAllOpportunity().subscribe((data:any) => {
+  private getAllOpportunity() {
+    this.opportunityService.getOpportunities().subscribe((data: any) => {
       console.log('data', data);
       this.opportunities = data;
-    })
+    });
   }
-  goToEditPage() {
+  goToEditPage() {}
 
+  addopportunityCheck(data: any) {
+    if (data) {
+      this.getAllOpportunity();
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Opportunité ajoutée avec succès.',
+      });
+    } else {
+      console.log('no');
+    }
+  }
+  editopportunityCheck(data: any) {
+    if (data) {
+      this.getAllOpportunity();
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Opportunité mise à jour avec succès.',
+      });
+    } else {
+      console.log('not updated');
+    }
+  }
+  selectOpportunity(data: any) {
+    this.selectedOpportunity = data;
   }
 
+  deleteOpportunity(opporunity: any) {
+    this.opportunityService
+      .deleteOpportunity(opporunity.id)
+      .subscribe((res: any) => {
+        console.log(res);
+        this.getAllOpportunity();
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Opportunité supprimée avec succès.',
+        });
+      });
+  }
 }

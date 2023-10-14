@@ -7,15 +7,34 @@ import { EditEventComponent } from './components/events/edit-event/edit-event.co
 import { ChangeInformationComponent } from './components/change-information/change-information.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { OpportunityComponent } from './components/opportunity/opportunity.component';
+import { MediasComponent } from './components/medias/medias.component';
+
 import { EditUserComponent } from './components/user-list/edit-user/edit-user.component';
 import { AddUserComponent } from './components/user-list/add-user/add-user.component';
 import { AddEventComponent } from './components/events/add-event/add-event.component';
+import { PartenairesComponent } from './components/partenaire/partenaire.component';
 
 const routes: Routes = [
   {
     path: '',
     component: BaseComponent,
     children: [
+      {
+        path: 'user-list',
+        component: UserListComponent,
+      },
+      {
+        path: 'media',
+        component: MediasComponent,
+      },
+      {
+        path: 'events',
+        component: EventsComponent,
+      },
+      {
+        path: 'events/:id',
+        component: EditEventComponent,
+      },
       {
         path: 'skills',
         component: SkillsComponent,
@@ -24,18 +43,9 @@ const routes: Routes = [
         path: 'opportunity',
         component: OpportunityComponent,
       },
-
-      {
-        path: 'events/:id',
-        component: EditEventComponent,
-      },
       {
         path: 'change',
         component: ChangeInformationComponent,
-      },
-      {
-        path: 'user-list',
-        component: UserListComponent,
       },
       {
         path: 'addUser',
@@ -53,14 +63,13 @@ const routes: Routes = [
         path: 'addEvent',
         component: AddEventComponent,
       },
-      // {
-      //   path: 'editEvent/:id',
-      //   component: EditEventComponent,
-      // },
-
+      {
+        path: 'partenaire',
+        component: PartenairesComponent,
+      },
       {
         path: '**',
-        redirectTo: '',
+        redirectTo: 'events',
       },
     ],
   },

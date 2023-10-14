@@ -5,10 +5,10 @@
         <div
           class="d-flex flex-wrap align-items-center justify-content-between breadcrumb-content"
         >
-          <h5>Events</h5>
+          <h5>Evénements</h5>
           <div class="pl-3 border-left btn-new">
             <button class="btn btn-primary" (click)="goToAddEvent()">
-              Add Event
+              Nouveau évenement
             </button>
           </div>
         </div>
@@ -33,10 +33,10 @@
             aria-labelledby="dropdownMenuButton04"
           >
             <button class="dropdown-item" (click)="goToEditPage(event.id)">
-              <i class="ri-edit-2-line mr-2"></i>Edit
+              <i class="ri-edit-2-line mr-2"></i>Modifier
             </button>
             <button class="dropdown-item" (click)="deleteEvent(event.id)">
-              <i class="ri-delete-bin-5-line mr-2"></i>Delete
+              <i class="ri-delete-bin-5-line mr-2"></i>Supprimer
             </button>
           </div>
         </div>
@@ -45,6 +45,7 @@
         class="d-flex align-items-center justify-content-between mb-4"
         data-target="#details-modal"
         data-toggle="modal"
+        style="min-height: 240px"
       >
         <img
           *ngIf="event.image"
@@ -54,7 +55,7 @@
         />
         <img
           *ngIf="!event.image"
-          src="../../../../assets/images/insert-image.png"
+          src="assets/images/insert-image.png"
           alt=""
           class="event-image"
         />
@@ -65,6 +66,10 @@
       </p>
       <div class="pt-3 border-top">
         <p class="mb-1"><i class="ri-map-pin-line"></i> {{ event.location }}</p>
+        <span>
+          <strong>{{ event.type }}</strong>
+        </span>
+
         <div class="d-flex justify-content-between mb-1">
           <span>
             <i class="ri-calendar-2-line"></i>
@@ -78,7 +83,7 @@
               role="button"
               data-toggle="popover"
               data-bs-trigger="focus"
-              data-bs-content="Number of participants"
+              data-bs-content="le nombre des participants"
             >
               <i class="ri-question-line ml-1"></i>
             </a>
@@ -88,4 +93,4 @@
     </div>
   </div>
 </div>
-<app-event-details></app-event-details>
+<!-- <app-event-details></app-event-details> -->
