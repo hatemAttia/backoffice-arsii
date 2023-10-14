@@ -5,7 +5,7 @@
         <div
           class="d-flex flex-wrap align-items-center justify-content-between breadcrumb-content"
         >
-          <h5>List Partner</h5>
+          <h5>Partenaires</h5>
           <div class="d-flex align-items-center">
             <div class="pl-3 border-left btn-new">
               <a
@@ -13,7 +13,7 @@
                 class="btn btn-primary"
                 data-target="#add-partenaire-modal"
                 data-toggle="modal"
-                >New parnter</a
+                >Nouveau Partenaire</a
               >
             </div>
           </div>
@@ -51,6 +51,16 @@
                   <p class="m-0">address : {{ item.address }}</p>
                 </li>
               </ul>
+              <div class="pl-3 border-left btn-new">
+                <a
+                  href="#"
+                  class="btn btn-primary"
+                  data-target="#edit-partenaire-modal"
+                  data-toggle="modal"
+                  (click)="selectPartenaire(item)"
+                  >Modifier</a
+                >
+              </div>
             </div>
           </div>
         </div>

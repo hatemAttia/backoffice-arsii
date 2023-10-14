@@ -20,11 +20,11 @@ export class AppHttpInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    console.log("interceptor 1");
-    
+    console.log('interceptor 1');
+
     if (this.authService.isLoggedIn) {
       const authToken = this.authService.getToken();
-      console.log("interceptor --is connceted");
+      console.log('interceptor --is connceted');
 
       const cloned = req.clone({
         headers: req.headers.set('Authorization', 'Bearer ' + authToken),
@@ -35,15 +35,17 @@ export class AppHttpInterceptor implements HttpInterceptor {
           return event;
         }),
         catchError((error: HttpErrorResponse) => {
-          if (error.status == 401) {
+          console.log(error);
+
+          if (error.status === 401 || error.status === 403) {
             this.authService.logout();
-            this.router.navigate(['/auth/login']);
+            this.router.navigate(['/auth/signin']);
           }
           return throwError(error);
         })
       );
     } else {
-      console.log("interceptor --is deconected");
+      console.log('interceptor --is deconected');
 
       return next.handle(req).pipe(finalize(() => {}));
     }
