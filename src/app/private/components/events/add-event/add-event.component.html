@@ -5,7 +5,7 @@
         <div class="card">
           <div class="card-header d-flex justify-content-between">
             <div class="header-title">
-              <h4 class="card-title">Events</h4>
+              <h4 class="card-title">Evénements</h4>
             </div>
           </div>
           <div class="card-body">
@@ -13,12 +13,12 @@
               <form #myForm="ngForm">
                 <div class="row">
                   <div class="form-group col-md-6">
-                    <label for="title">Event Title</label>
+                    <label for="title">Titre</label>
                     <input
                       type="text"
                       class="form-control"
                       name="title"
-                      placeholder="Event Titile"
+                      placeholder="titre"
                       [(ngModel)]="newEvent.title"
                       required
                     />
@@ -29,16 +29,16 @@
                         myForm.controls['title'].touched
                       "
                     >
-                      title is required.
+                      Le titre est obligatoire.
                     </div>
                   </div>
                   <div class="form-group col-md-6">
-                    <label for="fname">Formateur Name</label>
+                    <label for="fname">Nom du formateur:</label>
                     <input
                       type="text"
                       class="form-control"
                       name="formateur"
-                      placeholder="Formateur Name"
+                      placeholder="nom du formateur"
                       [(ngModel)]="newEvent.formateur"
                       required
                     />
@@ -49,16 +49,16 @@
                         myForm.controls['formateur'].touched
                       "
                     >
-                      formateur name is required.
+                     le nom du formateur est obligatoire.
                     </div>
                   </div>
                   <div class="form-group col-md-6">
-                    <label for="location">Location</label>
+                    <label for="location">Adresse</label>
                     <input
                       type="text"
                       class="form-control"
                       name="location"
-                      placeholder="location"
+                      placeholder="adresse"
                       [(ngModel)]="newEvent.location"
                       required
                     />
@@ -69,16 +69,16 @@
                         myForm.controls['location'].touched
                       "
                     >
-                      location is required.
+                      L'adresse est obligatoire.
                     </div>
                   </div>
                   <div class="form-group col-md-6">
-                    <label for="price">Price:</label>
+                    <label for="price">Prix:</label>
                     <input
                       type="number"
                       class="form-control"
                       name="price"
-                      placeholder="20 TND"
+                      placeholder="10 TND"
                       [(ngModel)]="newEvent.price"
                       required
                     />
@@ -89,7 +89,7 @@
                         myForm.controls['price'].touched
                       "
                     >
-                      price is required.
+                      Le prix est obligatoire.
                     </div>
                   </div>
                   <div class="form-group col-md-6">
@@ -100,7 +100,7 @@
                       type="number"
                       class="form-control"
                       name="maxOfParticipants"
-                      placeholder="Number of participants"
+                      placeholder="nombre des participants"
                       [(ngModel)]="newEvent.maxOfParticipants"
                       required
                     />
@@ -111,7 +111,7 @@
                         myForm.controls['maxOfParticipants'].touched
                       "
                     >
-                      Max of participants is required.
+                     Le nombre des participants est obligatoire.
                     </div>
                   </div>
                   <div class="form-group col-md-6">
@@ -131,7 +131,7 @@
                         myForm.controls['date'].touched
                       "
                     >
-                      date is required.
+                      La date est obligatoire.
                     </div>
                   </div>
                   <div class="form-group col-md-12">
@@ -153,7 +153,7 @@
                         myForm.controls['type'].touched
                       "
                     >
-                      type is required.
+                      Le type est obligatoire.
                     </div>
                   </div>
                   <div class="form-group col-md-12">
@@ -173,7 +173,7 @@
                         myForm.controls['description'].touched
                       "
                     >
-                      description is required.
+                      La description est obligatoire.
                     </div>
                   </div>
                 </div>
@@ -194,7 +194,7 @@
                 <div class="card">
                   <div class="card-header d-flex justify-content-between">
                     <div class="iq-header-title">
-                      <h4 class="card-title">Upload image</h4>
+                      <h4 class="card-title">Télécharger une image</h4>
                     </div>
                   </div>
                   <div class="card-body">
@@ -215,9 +215,9 @@
                     class="btn btn-primary mr-2"
                     [disabled]="myForm.invalid"
                   >
-                    Add New Event
+                    Ajouter
                   </button>
-                  <button class="btn bg-gray" (click)="goBack()">Cancel</button>
+                  <button class="btn bg-gray" (click)="goBack()">Annuler</button>
                 </div>
               </form>
             </div>

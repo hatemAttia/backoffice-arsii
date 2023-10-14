@@ -5,10 +5,10 @@
         <div
           class="d-flex flex-wrap align-items-center justify-content-between breadcrumb-content"
         >
-          <h5>Events</h5>
+          <h5>Evénements</h5>
           <div class="pl-3 border-left btn-new">
             <button class="btn btn-primary" (click)="goToAddEvent()">
-              Add Event
+              Nouveau évenement
             </button>
           </div>
         </div>
@@ -33,10 +33,10 @@
             aria-labelledby="dropdownMenuButton04"
           >
             <button class="dropdown-item" (click)="goToEditPage(event.id)">
-              <i class="ri-edit-2-line mr-2"></i>Edit
+              <i class="ri-edit-2-line mr-2"></i>Modifier
             </button>
             <button class="dropdown-item" (click)="deleteEvent(event.id)">
-              <i class="ri-delete-bin-5-line mr-2"></i>Delete
+              <i class="ri-delete-bin-5-line mr-2"></i>Supprimer
             </button>
           </div>
         </div>
@@ -83,7 +83,7 @@
               role="button"
               data-toggle="popover"
               data-bs-trigger="focus"
-              data-bs-content="Number of participants"
+              data-bs-content="le nombre des participants"
             >
               <i class="ri-question-line ml-1"></i>
             </a>

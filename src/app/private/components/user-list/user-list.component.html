@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-header d-flex justify-content-between">
         <div class="header-title">
-          <h4 class="card-title">User List</h4>
+          <h4 class="card-title">Liste des utilisateurs</h4>
         </div>
       </div>
       <div class="card-body">
@@ -17,7 +17,7 @@
                       type="search"
                       class="form-control"
                       id="exampleInputSearch"
-                      placeholder="Search"
+                      placeholder="Chercher ici"
                       aria-controls="user-list-table"
                     />
                   </div>
@@ -30,7 +30,7 @@
                   class="btn bg-primary"
                   (click)="redirectToNewUsertPage()"
                 >
-                  Add User
+                  Nouveau utilisateur
                 </button>
               </div>
             </div>
@@ -44,11 +44,11 @@
             <thead>
               <tr class="text-center">
                 <th>Image</th>
-                <th>Name</th>
+                <th>Nom</th>
                 <th>Contact</th>
                 <th>Email</th>
-                <th>Post</th>
-                <th>Status</th>
+                <th>Poste</th>
+                <th>Statut</th>
                 <th style="min-width: 110px">Action</th>
               </tr>
             </thead>
@@ -73,10 +73,10 @@
                 <td>{{ user.post }}</td>
                 <td>
                   <span class="badge bg-secondary" *ngIf="!user.status"
-                    >Disabled</span
+                    >Desactiver</span
                   >
                   <span class="badge bg-success" *ngIf="user.status"
-                    >Enabled</span
+                    >Activer</span
                   >
                 </td>
                 <td class="pt-0">
@@ -86,45 +86,45 @@
                         class="btn btn-sm btn-warning mr-1"
                         (click)="redirectToEditPage(user.id)"
                       >
-                        Edit
+                        Modifier
                       </button>
                       <button
                         [hidden]="user.status"
                         class="btn btn-sm btn-primary mr-1"
                         (click)="onEnableUser(user.id)"
                       >
-                        Enable
+                        Activer
                       </button>
                       <button
                         [hidden]="!user.status"
                         class="btn btn-sm btn-primary mr-1"
                         (click)="onEnableUser(user.id)"
                       >
-                        Disable
+                        Desactiver
                       </button>
                       <button
                         class="btn btn-sm btn-danger"
                         (click)="confirmDeleteId = user.id!"
                       >
-                        Delete
+                        Supprimer
                       </button>
                     </div>
                     <div
                       [hidden]="confirmDeleteId !== user.id"
                       class="text-center mb-2"
                     >
-                      <strong class="text-sm">Delete?</strong><br />
+                      <strong class="text-sm">Voulez-vous supprimer ce utilisateur?</strong><br />
                       <button
                         class="btn btn-sm btn-danger mr-1"
                         (click)="onDeleteAccount(user.id)"
                       >
-                        Yes
+                        Oui
                       </button>
                       <button
                         class="btn btn-sm btn-light"
                         (click)="confirmDeleteId = 0"
                       >
-                        No
+                        Non
                       </button>
                     </div>
                   </div>
@@ -143,7 +143,7 @@
                     href="#"
                     tabindex="-1"
                     aria-disabled="true"
-                    >Previous</a
+                    >Précedents</a
                   >
                 </li>
                 <li class="page-item active">
@@ -152,7 +152,7 @@
                 <li class="page-item"><a class="page-link" href="#">2</a></li>
                 <li class="page-item"><a class="page-link" href="#">3</a></li>
                 <li class="page-item">
-                  <a class="page-link" href="#">Next</a>
+                  <a class="page-link" href="#">Suivants</a>
                 </li>
               </ul>
             </nav>
