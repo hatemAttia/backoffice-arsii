@@ -43,7 +43,7 @@ export class PartenairesComponent implements OnInit {
       this.getAllPartenaire();
       this.messageService.add({
         severity: 'success',
-        summary: 'media added Successfully',
+        summary: 'Partenaire ajoutée avec succès.',
       });
     } else {
       console.log('no');
@@ -54,7 +54,7 @@ export class PartenairesComponent implements OnInit {
       this.getAllPartenaire();
       this.messageService.add({
         severity: 'success',
-        summary: 'media updated Successfully',
+        summary: 'Partenaire Modifiée avec succès.',
       });
     } else {
       console.log('no');
@@ -70,7 +70,7 @@ export class PartenairesComponent implements OnInit {
       this.getAllPartenaire();
       this.messageService.add({
         severity: 'success',
-        summary: 'media deleted Successfully',
+        summary: 'Partenaire supprimée avec succès.',
       });
     });
   }
