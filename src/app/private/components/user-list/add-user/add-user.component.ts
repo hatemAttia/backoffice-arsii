@@ -19,7 +19,11 @@ export class AddUserComponent implements OnInit {
 
   onSubmit(userData: any) {
     this.userService
-      .addUser({ ...userData, userName: userData.email })
+      .addUser({
+        ...userData,
+        userName: userData.email,
+        image: this.selectedFile,
+      })
       .subscribe((response) => {
         console.log('response', response);
         if (response) {
@@ -30,5 +34,10 @@ export class AddUserComponent implements OnInit {
 
   goBack() {
     this.router.navigate(['/private/user-list']);
+  }
+
+  selectedFile: File | null = null;
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
   }
 }

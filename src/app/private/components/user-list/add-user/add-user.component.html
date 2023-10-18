@@ -300,6 +300,13 @@
                     </div>
                   </div>
                 </div>
+                <input
+                  class="mx-5"
+                  type="file"
+                  (change)="onFileSelected($event)"
+                  [(ngModel)]="newUser.image"
+                  name="cv"
+                />
                 <hr />
                 <div class="text-center mt-2">
                   <button

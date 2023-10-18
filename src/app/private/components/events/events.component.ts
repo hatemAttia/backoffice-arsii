@@ -11,19 +11,20 @@ import { Router } from '@angular/router';
 })
 export class EventsComponent implements OnInit {
   events: Event[] = [];
-
+  selectedEvent: any = null;
+  selectedType = '';
   constructor(private eventService: EventService, private router: Router) {}
 
   ngOnInit(): void {
-    this.getAllEvents();
+    this.getAllEvents(null);
 
     Array.from(document.querySelectorAll('a[data-toggle="popover"]')).forEach(
       (popverMode) => new Popover(popverMode)
     );
   }
 
-  private getAllEvents() {
-    this.eventService.getAllEvents().subscribe((data) => {
+  getAllEvents(type: string | null) {
+    this.eventService.getAllEvents(type).subscribe((data) => {
       this.events = data;
     });
   }
@@ -42,7 +43,7 @@ export class EventsComponent implements OnInit {
     console.log('eventId', eventId);
     if (eventId != undefined) {
       this.eventService.deleteEvent(eventId).subscribe((data) => {
-        this.getAllEvents();
+        this.getAllEvents(null);
       });
     }
   }

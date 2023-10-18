@@ -7,7 +7,27 @@
         >
           <h5>Evénements</h5>
           <div class="pl-3 border-left btn-new">
-            <button class="btn btn-primary" (click)="goToAddEvent()">
+            <button
+              class="btn mx-2"
+              (click)="getAllEvents('Event'); selectedType = 'Event'"
+              [ngClass]="
+                selectedType == 'Event' ? 'btn-info' : 'btn-outline-info'
+              "
+            >
+              EVENEMENT
+            </button>
+            <button
+              class="btn mx-2"
+              [ngClass]="
+                selectedType == 'Formation'
+                  ? 'btn-secondary'
+                  : 'btn-outline-secondary'
+              "
+              (click)="getAllEvents('Formation'); selectedType = 'Formation'"
+            >
+              FORMATION
+            </button>
+            <button class="btn btn-primary mx-2" (click)="goToAddEvent()">
               Nouveau évenement
             </button>
           </div>
@@ -19,7 +39,7 @@
 
 <div class="row">
   <div
-    class="col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-3"
+    class="col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-3"
     *ngFor="let event of events"
   >
     <div class="event card-body">
@@ -43,9 +63,10 @@
       </div>
       <div
         class="d-flex align-items-center justify-content-between mb-4"
+        (click)="selectedEvent = event"
         data-target="#details-modal"
         data-toggle="modal"
-        style="min-height: 240px"
+        style="min-height: 260px; max-height: 260px"
       >
         <img
           *ngIf="event.image"
@@ -61,11 +82,11 @@
         />
       </div>
       <h5 class="mb-1">{{ event.title }}</h5>
-      <p class="mb-3">
-        {{ event.description }}
-      </p>
+      <p class="mb-3">{{ event.description | slice : 0 : 25 }}...</p>
       <div class="pt-3 border-top">
-        <p class="mb-1"><i class="ri-map-pin-line"></i> {{ event.location }}</p>
+        <p class="mb-1">
+          <i class="ri-map-pin-line"></i> {{ event.location | slice : 0 : 25 }}
+        </p>
         <span>
           <strong>{{ event.type }}</strong>
         </span>
@@ -93,4 +114,4 @@
     </div>
   </div>
 </div>
-<!-- <app-event-details></app-event-details> -->
+<app-event-details [event]="selectedEvent"></app-event-details>

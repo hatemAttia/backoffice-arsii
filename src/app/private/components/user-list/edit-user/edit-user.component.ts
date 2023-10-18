@@ -6,17 +6,19 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-edit-user',
   templateUrl: './edit-user.component.html',
-  styleUrls: ['./edit-user.component.scss']
+  styleUrls: ['./edit-user.component.scss'],
 })
 export class EditUserComponent implements OnInit {
+  userId: number;
+  user: any = {};
 
-  userId: number
-  user: any = {}
-
-  constructor(private userService: UserService, private route: ActivatedRoute, private router: Router) {
+  constructor(
+    private userService: UserService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
     this.userId = Number(this.route.snapshot.paramMap.get('id'));
-   }
-
+  }
 
   ngOnInit(): void {
     this.getUserById();
@@ -33,27 +35,35 @@ export class EditUserComponent implements OnInit {
   //   })
   // }
 
-  private getUserById(){
-    const filter = {"role": "MEMBER"}
+  private getUserById() {
+    const filter = { role: 'MEMBER' };
 
-    this.userService.getUserList(filter).subscribe(data => {
-      let content = data.content
+    this.userService.getUserList(filter).subscribe((data) => {
+      let content = data.content;
       const filteredUser = content.filter((user: User) => {
-        return user.id == this.userId
-      })
+        return user.id == this.userId;
+      });
       this.user = filteredUser[0];
-    })
+    });
   }
 
-
   updateUser(userData: any) {
-    this.userService.updateUser(this.userId, userData).subscribe((data) => {
-      this.router.navigate(['/private/user-list']);
-    })
+    this.userService
+      .updateUser(this.userId, {
+        ...userData,
+        image: this.selectedFile,
+      })
+      .subscribe((data) => {
+        this.router.navigate(['/private/user-list']);
+      });
   }
 
   goBack() {
     this.router.navigate(['/private/user-list']);
   }
 
+  selectedFile: File | null = null;
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+  }
 }

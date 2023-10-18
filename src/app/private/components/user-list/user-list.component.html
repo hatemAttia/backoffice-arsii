@@ -65,6 +65,7 @@
                     *ngIf="user.image"
                     [src]="'/api/arsii/file/img/' + user.image"
                     alt="image"
+                    height="50"
                   />
                 </td>
                 <td>{{ user.userName }}</td>
@@ -113,7 +114,9 @@
                       [hidden]="confirmDeleteId !== user.id"
                       class="text-center mb-2"
                     >
-                      <strong class="text-sm">Voulez-vous supprimer ce utilisateur?</strong><br />
+                      <strong class="text-sm"
+                        >Voulez-vous supprimer ce utilisateur?</strong
+                      ><br />
                       <button
                         class="btn btn-sm btn-danger mr-1"
                         (click)="onDeleteAccount(user.id)"

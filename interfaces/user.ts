@@ -6,7 +6,6 @@ export interface User {
   email: string;
   phoneNumber: string;
   region: string;
-  image: string;
   status: boolean;
   role: string;
   dateOfBirth: Date;
@@ -14,6 +13,7 @@ export interface User {
   job: string;
   post?: string;
   office: string;
+  image?: any;
   password: string;
   universityOrCompany: string;
 }

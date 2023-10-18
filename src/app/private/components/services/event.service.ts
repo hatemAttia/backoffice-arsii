@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Event } from 'interfaces/event';
 import { Observable, mergeMap } from 'rxjs';
@@ -19,8 +19,10 @@ export class EventService {
   //   return this.httpClient.post(`${this.baseUrl}admin/event`, eventData);
   // }
 
-  getAllEvents(): Observable<any> {
-    return this.httpClient.get(`${this.baseUrl}admin/event`);
+  getAllEvents(type: string | null): Observable<any> {
+    let params = new HttpParams();
+    if (type) params = params.set('type', type.toString());
+    return this.httpClient.get(`${this.baseUrl}admin/event`, { params });
   }
 
   getEventById(eventId: Number): Observable<any> {
