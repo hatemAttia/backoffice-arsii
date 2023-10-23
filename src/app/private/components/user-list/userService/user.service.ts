@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from 'interfaces/user';
 import { Observable, mergeMap } from 'rxjs';
@@ -15,8 +15,15 @@ export class UserService {
     private memberService: MemberService
   ) {}
 
-  getUserList(filter: object): Observable<any> {
-    return this.httpClient.post(`${this.baseUrl}admin/filter`, filter);
+  getUserList(page: number, pageSize: number, filter: object): Observable<any> {
+    let params = new HttpParams()
+      .set('page', page.toString())
+      .set('pageSize', pageSize.toString());
+
+    return this.httpClient.post(
+      `${this.baseUrl}admin/filter?page=${page - 1}&size=${pageSize}`,
+      filter
+    );
   }
 
   // serveImage(imageFile: any): Observable<any>{

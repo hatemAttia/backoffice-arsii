@@ -23,6 +23,7 @@ import { EventDetailsComponent } from './components/events/event-details/event-d
 import { EditPartenaireComponent } from './components/partenaire/edit-partenaire/edit-partenaire.component';
 import { AddPartenaireComponent } from './components/partenaire/add-partenaire/add.partenaire.component';
 import { PartenairesComponent } from './components/partenaire/partenaire.component';
+import { PaginatorModule } from 'primeng/paginator';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { PartenairesComponent } from './components/partenaire/partenaire.compone
     PrivateRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    PaginatorModule,
   ],
   providers: [MemberService],
 })

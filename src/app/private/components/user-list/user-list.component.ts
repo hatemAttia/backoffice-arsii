@@ -11,7 +11,10 @@ import { UserService } from './userService/user.service';
 export class UserListComponent implements OnInit {
   confirmDeleteId: number;
   users: User[] = [];
-
+  page: any = 1;
+  pageSize: any = 10;
+  count = 0;
+  keyword: any = null;
   constructor(private userService: UserService, private router: Router) {
     this.confirmDeleteId = 0;
   }
@@ -34,11 +37,16 @@ export class UserListComponent implements OnInit {
   private getUsers() {
     let filter = {
       role: 'MEMBER',
+      firstName: this.keyword,
     };
-    this.userService.getUserList(filter).subscribe((data) => {
-      console.log('data', data.content);
-      this.users = data.content;
-    });
+    this.userService
+      .getUserList(this.page, this.pageSize, filter)
+      .subscribe((data) => {
+        console.log('data', data.content);
+        this.users = data.content;
+        this.count = data.totalElements;
+        console.log(this.count);
+      });
   }
 
   onEnableUser(userId: number | undefined) {
@@ -55,5 +63,11 @@ export class UserListComponent implements OnInit {
         this.getUsers();
       });
     }
+  }
+
+  paginate(event: any) {
+    this.page = event.page + 1;
+    this.pageSize = event.rows;
+    this.getUsers();
   }
 }

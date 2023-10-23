@@ -21,7 +21,7 @@ export class EditUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getUserById();
+    //this.getUserById();
   }
 
   // use this when skander adds filter by id in the getAllUserByFilter request
@@ -35,17 +35,17 @@ export class EditUserComponent implements OnInit {
   //   })
   // }
 
-  private getUserById() {
-    const filter = { role: 'MEMBER' };
+  // private getUserById() {
+  //   const filter = { role: 'MEMBER' };
 
-    this.userService.getUserList(filter).subscribe((data) => {
-      let content = data.content;
-      const filteredUser = content.filter((user: User) => {
-        return user.id == this.userId;
-      });
-      this.user = filteredUser[0];
-    });
-  }
+  //   this.userService.getUserList(filter).subscribe((data) => {
+  //     let content = data.content;
+  //     const filteredUser = content.filter((user: User) => {
+  //       return user.id == this.userId;
+  //     });
+  //     this.user = filteredUser[0];
+  //   });
+  // }
 
   updateUser(userData: any) {
     this.userService
