@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class AuthService {
   private _isLoggedIn = false;
   IsLoggedInStore = new BehaviorSubject<boolean>(false);
+  UserLoginedStore = new BehaviorSubject<any>(null);
   constructor(private httpClient: HttpClient, private router: Router) {}
 
   identify(payload: any): Observable<any> {
@@ -26,13 +27,22 @@ export class AuthService {
 
   get isLoggedIn() {
     this.IsLoggedInStore.next(!!this.getToken());
+    if (!!this.getToken()) {
+      this.UserLoginedStore.next(this.getCurrentUser());
+    }
     return !!this.getToken();
   }
 
   getIsLoggedInStore() {
     return this.IsLoggedInStore.getValue();
   }
+  getUserLoginedStore() {
+    return this.UserLoginedStore.getValue();
+  }
 
+  getCurrentUser() {
+    return JSON.parse(localStorage.getItem('_user') || 'null');
+  }
   getToken() {
     return localStorage.getItem('access_token') || '';
   }
@@ -46,6 +56,7 @@ export class AuthService {
   logout() {
     localStorage.clear();
     this.IsLoggedInStore.next(false);
+    this.UserLoginedStore.next(null);
     this.router.navigate(['/auth/login']);
   }
 

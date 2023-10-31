@@ -13,6 +13,7 @@ import { EditUserComponent } from './components/user-list/edit-user/edit-user.co
 import { AddUserComponent } from './components/user-list/add-user/add-user.component';
 import { AddEventComponent } from './components/events/add-event/add-event.component';
 import { PartenairesComponent } from './components/partenaire/partenaire.component';
+import { ClubComponent } from './components/club/club.component';
 
 const routes: Routes = [
   {
@@ -66,6 +67,10 @@ const routes: Routes = [
       {
         path: 'partenaire',
         component: PartenairesComponent,
+      },
+      {
+        path: 'club',
+        component: ClubComponent,
       },
       {
         path: '**',

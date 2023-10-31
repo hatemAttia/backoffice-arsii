@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'interfaces/user';
 import { Router } from '@angular/router';
 import { UserService } from './userService/user.service';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'app-user-list',
@@ -15,11 +16,17 @@ export class UserListComponent implements OnInit {
   pageSize: any = 10;
   count = 0;
   keyword: any = null;
-  constructor(private userService: UserService, private router: Router) {
+  currentRole = '';
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    public authService: AuthService
+  ) {
     this.confirmDeleteId = 0;
   }
 
   ngOnInit(): void {
+    this.currentRole = this.authService.getUserLoginedStore().role;
     this.getUsers();
   }
 

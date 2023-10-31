@@ -22,6 +22,7 @@ export class SidenavComponent implements OnInit {
       console.log(data);
 
       this.userData = data;
+      localStorage.setItem('_user', JSON.stringify(this.userData));
     });
   }
 

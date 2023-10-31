@@ -3,6 +3,7 @@ import { Popover } from 'bootstrap';
 import { Component, OnInit } from '@angular/core';
 import { Event } from 'interfaces/event';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'app-events',
@@ -13,11 +14,16 @@ export class EventsComponent implements OnInit {
   events: Event[] = [];
   selectedEvent: any = null;
   selectedType = '';
-  constructor(private eventService: EventService, private router: Router) {}
+  currentRole: any;
+  constructor(
+    private eventService: EventService,
+    private router: Router,
+    public authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.getAllEvents(null);
-
+    this.currentRole = this.authService.getUserLoginedStore().role;
     Array.from(document.querySelectorAll('a[data-toggle="popover"]')).forEach(
       (popverMode) => new Popover(popverMode)
     );

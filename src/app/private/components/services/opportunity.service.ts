@@ -9,7 +9,7 @@ export class OpportunityService {
   constructor(private http: HttpClient) {}
 
   getOpportunities(): Observable<any> {
-    return this.http.get('api/arsii/admin/opportunity');
+    return this.http.get('api/arsii/member/opportunity');
   }
 
   addOpportunity(data: any): Observable<any> {

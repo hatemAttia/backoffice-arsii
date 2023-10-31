@@ -3,6 +3,7 @@ import { Popover } from 'bootstrap';
 import { MemberService } from '../services/member.service';
 import { MessageService } from 'primeng/api';
 import { PartenaireService } from '../services/partenaire.service';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'app-partenaire',
@@ -18,12 +19,16 @@ export class PartenairesComponent implements OnInit {
     title: '',
     type: '',
   };
+  currentRole: any;
   constructor(
-    private mediaService: PartenaireService,
-    private messageService: MessageService
+    private partenaireService: PartenaireService,
+    private messageService: MessageService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
+    this.currentRole = this.authService.getUserLoginedStore().role;
+
     Array.from(document.querySelectorAll('a[data-toggle="popover"]')).forEach(
       (popverMode) => new Popover(popverMode)
     );
@@ -31,7 +36,7 @@ export class PartenairesComponent implements OnInit {
   }
 
   private getAllPartenaire() {
-    this.mediaService.getOpportunities().subscribe((data: any) => {
+    this.partenaireService.getPartenaire().subscribe((data: any) => {
       console.log('data', data);
       this.partenaire = data;
     });
@@ -65,7 +70,7 @@ export class PartenairesComponent implements OnInit {
   }
 
   deletePartenaire(media: any) {
-    this.mediaService.deletePartenaire(media.id).subscribe((res: any) => {
+    this.partenaireService.deletePartenaire(media.id).subscribe((res: any) => {
       console.log(res);
       this.getAllPartenaire();
       this.messageService.add({

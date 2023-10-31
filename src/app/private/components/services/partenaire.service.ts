@@ -9,8 +9,8 @@ import { Observable, mergeMap } from 'rxjs';
 export class PartenaireService {
   constructor(private http: HttpClient, private memberService: MemberService) {}
 
-  getOpportunities(): Observable<any> {
-    return this.http.get('api/arsii/admin/partner');
+  getPartenaire(): Observable<any> {
+    return this.http.get('api/arsii/member/partner');
   }
 
   // addPartenaire(data: any): Observable<any> {

@@ -20,7 +20,7 @@ export class AppHttpInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    console.log('interceptor 1');
+    console.log('++++++', req);
 
     if (this.authService.isLoggedIn) {
       const authToken = this.authService.getToken();
@@ -38,6 +38,10 @@ export class AppHttpInterceptor implements HttpInterceptor {
           console.log(error);
 
           if (error.status === 401 || error.status === 403) {
+            // this.authService.logout();
+            // this.router.navigate(['/auth/signin']);
+          }
+          if (req.url.includes('/me') && error.status === 500) {
             this.authService.logout();
             this.router.navigate(['/auth/signin']);
           }

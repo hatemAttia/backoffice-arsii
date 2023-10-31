@@ -9,8 +9,8 @@ import { MemberService } from './member.service';
 export class MediaService {
   constructor(private http: HttpClient, private memberService: MemberService) {}
 
-  getOpportunities(): Observable<any> {
-    return this.http.get('api/arsii/admin/media');
+  getMedias(): Observable<any> {
+    return this.http.get('api/arsii/member/media');
   }
 
   // addMedia(data: any): Observable<any> {

@@ -27,7 +27,11 @@
             >
               FORMATION
             </button>
-            <button class="btn btn-primary mx-2" (click)="goToAddEvent()">
+            <button
+              class="btn btn-primary mx-2"
+              (click)="goToAddEvent()"
+              *ngIf="currentRole == 'ADMIN'"
+            >
               Nouveau évenement
             </button>
           </div>
@@ -44,7 +48,7 @@
   >
     <div class="event card-body">
       <div class="text-end">
-        <div class="dropdown">
+        <div class="dropdown" *ngIf="currentRole == 'ADMIN'">
           <span class="py-2" id="dropdownMenuButton04" data-toggle="dropdown">
             <i class="ri-more-fill"></i>
           </span>

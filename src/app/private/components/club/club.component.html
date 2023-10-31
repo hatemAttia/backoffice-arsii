@@ -5,16 +5,16 @@
         <div
           class="d-flex flex-wrap align-items-center justify-content-between breadcrumb-content"
         >
-          <h5>Partenaires</h5>
+          <h5>Clubs</h5>
           <div class="d-flex align-items-center">
             <div class="pl-3 border-left btn-new">
               <a
                 *ngIf="currentRole == 'ADMIN'"
                 href="#"
                 class="btn btn-primary"
-                data-target="#add-partenaire-modal"
+                data-target="#add-club-modal"
                 data-toggle="modal"
-                >Nouveau Partenaire</a
+                >Nouveau Club</a
               >
             </div>
           </div>
@@ -29,13 +29,13 @@
   data-toggle-extra="tab-content"
 >
   <div class="row">
-    <div class="col-lg-4 col-md-6" *ngFor="let item of partenaire">
+    <div class="col-lg-4 col-md-6" *ngFor="let item of clubs">
       <div class="card-transparent card-block card-stretch card-height">
         <div class="card-body text-center p-0">
           <div class="item">
             <div class="odr-img">
               <img
-                [src]="'/api/arsii/file/img/' + item.image"
+                [src]="'/api/arsii/file/img/' + item.logo"
                 class="img-fluid rounded-circle avatar-100 m-auto"
                 alt="image"
               />
@@ -49,19 +49,22 @@
               </ul>
               <ul class="list-unstyled mb-3">
                 <li class="iq-card-icon-small mr-4 w-100">
-                  <p class="m-0">address : {{ item.address }}</p>
+                  <p class="m-0">description : {{ item.description }}</p>
                 </li>
               </ul>
-              <div
-                class="pl-3 border-left btn-new"
-                *ngIf="currentRole == 'ADMIN'"
-              >
+              <ul class="list-unstyled mb-3">
+                <li class="iq-card-icon-small mr-4 w-100">
+                  <p class="m-0">localisation : {{ item.location }}</p>
+                </li>
+              </ul>
+              <div class="pl-3 border-left btn-new">
                 <a
+                  *ngIf="currentRole == 'ADMIN'"
                   href="#"
                   class="btn btn-primary"
-                  data-target="#edit-partenaire-modal"
+                  data-target="#edit-club-modal"
                   data-toggle="modal"
-                  (click)="selectPartenaire(item)"
+                  (click)="selectClub(item)"
                   >Modifier</a
                 >
               </div>
@@ -72,8 +75,8 @@
     </div>
   </div>
 </div>
-<app-add-partenaire (customEvent)="addmediaCheck($event)"> </app-add-partenaire>
-<app-edit-partenaire
-  [partenaire]="selectedPartenaire"
-  (customEvent)="editmediaCheck($event)"
-></app-edit-partenaire>
+<app-add-club (customEvent)="addClubCheck($event)"> </app-add-club>
+<app-edit-club
+  [club]="selectedClub"
+  (customEvent)="editClubCheck($event)"
+></app-edit-club>

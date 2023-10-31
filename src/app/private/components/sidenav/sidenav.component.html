@@ -11,7 +11,7 @@
     <div class="data-scrollbar" data-scroll="1">
       <div class="iq-sidebar-menu">
         <ul id="iq-sidebar-toggle" class="iq-menu">
-          <li>
+          <li *ngIf="userData?.role === 'ADMIN'">
             <a routerLink="#" class="svg-icon">
               <svg
                 class="svg-icon"
@@ -74,7 +74,7 @@
               <span class="ml-4">Evénements</span>
             </a>
           </li>
-          <li>
+          <li *ngIf="userData?.role === 'ADMIN'">
             <a routerLink="/private/skills" class="svg-icon">
               <svg
                 class="svg-icon"
@@ -162,6 +162,28 @@
               <span class="ml-4">Partenaires</span>
             </a>
           </li>
+          <li>
+            <a routerLink="/private/club" class="svg-icon">
+              <svg
+                class="svg-icon"
+                width="25"
+                height="25"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              <span class="ml-4">Clubs</span>
+            </a>
+          </li>
         </ul>
       </div>
       <div class="pt-5 pb-2"></div>
@@ -194,7 +216,7 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto navbar-list align-items-center">
-              <li>
+              <li *ngIf="userData?.role === 'ADMIN'">
                 <div class="iq-search-bar device-search">
                   <form action="#" class="searchbox">
                     <a class="search-link" href="#"
@@ -208,7 +230,10 @@
                   </form>
                 </div>
               </li>
-              <li class="nav-item nav-icon search-content">
+              <li
+                class="nav-item nav-icon search-content"
+                *ngIf="userData?.role === 'ADMIN'"
+              >
                 <a
                   href="#"
                   class="search-toggle rounded"
@@ -237,7 +262,10 @@
                   </form>
                 </div>
               </li>
-              <li class="nav-item nav-icon nav-item-icon dropdown">
+              <li
+                *ngIf="userData?.role === 'ADMIN'"
+                class="nav-item nav-icon nav-item-icon dropdown"
+              >
                 <a
                   href="#"
                   class="search-toggle dropdown-toggle"
@@ -370,7 +398,10 @@
                   </div>
                 </div>
               </li>
-              <li class="nav-item nav-icon nav-item-icon dropdown">
+              <li
+                *ngIf="userData?.role === 'ADMIN'"
+                class="nav-item nav-icon nav-item-icon dropdown"
+              >
                 <a
                   href="#"
                   class="search-toggle dropdown-toggle"

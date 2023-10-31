@@ -24,6 +24,9 @@ import { EditPartenaireComponent } from './components/partenaire/edit-partenaire
 import { AddPartenaireComponent } from './components/partenaire/add-partenaire/add.partenaire.component';
 import { PartenairesComponent } from './components/partenaire/partenaire.component';
 import { PaginatorModule } from 'primeng/paginator';
+import { ClubComponent } from './components/club/club.component';
+import { AddClubComponent } from './components/club/add-club/add-club.component';
+import { EditClubComponent } from './components/club/edit-club/edit-club.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +50,9 @@ import { PaginatorModule } from 'primeng/paginator';
     EditPartenaireComponent,
     AddPartenaireComponent,
     PartenairesComponent,
+    ClubComponent,
+    AddClubComponent,
+    EditClubComponent,
   ],
   imports: [
     CommonModule,

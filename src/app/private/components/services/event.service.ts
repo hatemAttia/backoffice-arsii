@@ -22,7 +22,7 @@ export class EventService {
   getAllEvents(type: string | null): Observable<any> {
     let params = new HttpParams();
     if (type) params = params.set('type', type.toString());
-    return this.httpClient.get(`${this.baseUrl}admin/event`, { params });
+    return this.httpClient.get(`${this.baseUrl}member/event`, { params });
   }
 
   getEventById(eventId: Number): Observable<any> {

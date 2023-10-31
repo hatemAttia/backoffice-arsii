@@ -4,6 +4,7 @@ import { MemberService } from '../services/member.service';
 import { Media } from '../types/media';
 import { MediaService } from '../services/media.service';
 import { MessageService } from 'primeng/api';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'app-medias',
@@ -19,12 +20,15 @@ export class MediasComponent implements OnInit {
     title: '',
     type: '',
   };
+  currentRole: any;
   constructor(
     private mediaService: MediaService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
+    this.currentRole = this.authService.getUserLoginedStore().role;
     Array.from(document.querySelectorAll('a[data-toggle="popover"]')).forEach(
       (popverMode) => new Popover(popverMode)
     );
@@ -32,7 +36,7 @@ export class MediasComponent implements OnInit {
   }
 
   private getAllMedia() {
-    this.mediaService.getOpportunities().subscribe((data: any) => {
+    this.mediaService.getMedias().subscribe((data: any) => {
       console.log('data', data);
       this.medias = data;
     });

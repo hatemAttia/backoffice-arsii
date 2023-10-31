@@ -4,6 +4,7 @@ import { Opportunity } from '../types/opportunity';
 import { Popover } from 'bootstrap';
 import { OpportunityService } from '../services/opportunity.service';
 import { MessageService } from 'primeng/api';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'app-opportunity',
@@ -19,9 +20,11 @@ export class OpportunityComponent implements OnInit {
     title: '',
     type: 'Summer_internship',
   };
+  currentRole: any;
   constructor(
     private opportunityService: OpportunityService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -29,6 +32,7 @@ export class OpportunityComponent implements OnInit {
       (popverMode) => new Popover(popverMode)
     );
     this.getAllOpportunity();
+    this.currentRole = this.authService.getUserLoginedStore().role;
   }
 
   private getAllOpportunity() {

@@ -21,7 +21,7 @@ export class UserService {
       .set('pageSize', pageSize.toString());
 
     return this.httpClient.post(
-      `${this.baseUrl}admin/filter?page=${page - 1}&size=${pageSize}`,
+      `${this.baseUrl}member/filter?page=${page - 1}&size=${pageSize}`,
       filter
     );
   }
