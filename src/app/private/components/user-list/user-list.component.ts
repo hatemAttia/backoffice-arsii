@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 })
 export class UserListComponent implements OnInit {
   confirmDeleteId: number;
+  selectedUser: any = null;
   users: User[] = [];
   page: any = 1;
   pageSize: any = 10;

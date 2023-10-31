@@ -61,7 +61,11 @@
             </thead>
             <tbody class="text-center">
               <tr *ngFor="let user of users">
-                <td>
+                <td
+                  data-target="#details-user-modal"
+                  data-toggle="modal"
+                  (click)="selectedUser = user"
+                >
                   <img
                     *ngIf="!user.image"
                     src="assets/images/user/11.png"
@@ -180,3 +184,4 @@
     </div>
   </div>
 </div>
+<app-detail-user [user]="selectedUser"></app-detail-user>

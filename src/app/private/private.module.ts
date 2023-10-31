@@ -27,6 +27,7 @@ import { PaginatorModule } from 'primeng/paginator';
 import { ClubComponent } from './components/club/club.component';
 import { AddClubComponent } from './components/club/add-club/add-club.component';
 import { EditClubComponent } from './components/club/edit-club/edit-club.component';
+import { DetailUserComponent } from './components/user-list/detail-user/detail-user.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { EditClubComponent } from './components/club/edit-club/edit-club.compone
     ClubComponent,
     AddClubComponent,
     EditClubComponent,
+    DetailUserComponent,
   ],
   imports: [
     CommonModule,

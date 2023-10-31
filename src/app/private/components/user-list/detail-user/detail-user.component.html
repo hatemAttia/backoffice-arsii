@@ -1,0 +1,70 @@
+<div class="modal fade" role="dialog" aria-modal="true" id="details-user-modal">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content p-3" *ngIf="user">
+      <div class="modal-header d-block text-center pb-3 border-bttom">
+        <img
+          *ngIf="user.image"
+          [src]="'/api/arsii/file/img/' + user.image"
+          alt="image"
+          height="90"
+        />
+        <h5
+          class="modal-title"
+          id="exampleModalCenterTitle01"
+          style="text-transform: uppercase"
+        >
+          {{ user.lastName + " " + user.firstName }}
+        </h5>
+
+        <div class="d-flex justify-content-center py-2">
+          <h6
+            style="
+              background-color: #16979c;
+              padding: 5px;
+              border-radius: 5px;
+              color: #fff;
+            "
+          >
+            {{ user.post }}
+          </h6>
+
+          <h6 *ngIf="user.cv" class="mx-2 cv-btn" (click)="openPdf(user.cv)">
+            Ouvrir CV
+          </h6>
+        </div>
+        <div class="d-flex justify-content-center">
+          <div class="p-1" *ngFor="let item of user.contacts">
+            <div
+              style="
+                background-color: #f8f7f7;
+                border-radius: 5px;
+                border: 0.5px solid hsl(0, 2%, 89%);
+                padding: 10px;
+                width: max-content;
+              "
+            >
+              <a href="{{ item.url }}"
+                ><strong>{{ item.platform }}</strong></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-between px-3">
+        <div class="col-12 col-md-6 p-1">
+          <strong>travail: </strong>{{ user.job }}
+        </div>
+        <div class="col-12 col-md-6 p-1">
+          <strong>Email: </strong>{{ user.email }}
+        </div>
+
+        <div class="col-12 col-md-6 p-1">
+          <strong> Numero de téléphone:</strong> {{ user.phoneNumber }}
+        </div>
+        <div class="col-12 col-md-6 p-1">
+          <strong>Faculter: </strong> {{ user.universityOrCompany }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
