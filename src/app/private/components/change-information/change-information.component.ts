@@ -20,6 +20,17 @@ export class ChangeInformationComponent implements OnInit {
   skill = new Skill();
   cv = new Cv();
   contact = new Contact();
+  contactList: any = [];
+  platformList = [
+    'Email',
+    'Linkedin',
+    'GitHub',
+    'WhatsApp',
+    'Twitter',
+    'Telegram',
+    'Facebook',
+    'Instagram',
+  ];
   categories: Observable<any> | null = null;
   skills: Observable<any> | null = null;
   id!: number;
@@ -30,6 +41,7 @@ export class ChangeInformationComponent implements OnInit {
 
   showOldPassword = false;
   showNewPassword = false;
+  currentCv: any;
 
   toggleShowOldPassword() {
     this.showOldPassword = !this.showOldPassword;
@@ -64,6 +76,7 @@ export class ChangeInformationComponent implements OnInit {
         console.log(this.user_update);
         this.msg = 'Updated successfully';
         console.log(data);
+
         this.id = data.id;
         this.user_update.firstName = data.firstName;
         this.user_update.lastName = data.lastName;
@@ -73,11 +86,12 @@ export class ChangeInformationComponent implements OnInit {
         this.user_update.phoneNumber = data.phoneNumber;
         this.user_update.office = data.office;
         this.user_update.region = data.region;
-        this.user_update.cv = data.cv;
+        this.currentCv = data.cv;
         this.user_update.image = data.image;
         this.user_update.universityOrCompany = data.universityOrCompany;
         this.user_update.dateOfBirth = data.dateOfBirth;
         console.log(data);
+        this.contactList = data.contacts;
       },
       (error) => {
         console.log('Update is failed'), (this.msg = error.error);
@@ -163,16 +177,7 @@ export class ChangeInformationComponent implements OnInit {
     );
   }
   Contact() {
-    this.service.getUserById().subscribe(
-      (data) => {
-        this.contact.userId = data.id;
-      },
-      (error) => {
-        console.log('error');
-      }
-    );
-    this.contact.id = this.id;
-    this.service.ContactService(this.contact).subscribe(
+    this.service.ContactService({ ...this.contact, userId: this.id }).subscribe(
       (data) => {
         console.log(this.contact);
         this.msg = 'Contact urls sended successfully';
@@ -181,6 +186,7 @@ export class ChangeInformationComponent implements OnInit {
           summary: 'User Contact is Updated Successfully',
           detail: 'User Contact is Updated Successfully !!!',
         });
+        this.displayCurrentUSer();
       },
       (error) => {
         console.log('error,send contact urls failed'), (this.msg = error.error);
@@ -192,6 +198,16 @@ export class ChangeInformationComponent implements OnInit {
         });
       }
     );
+  }
+  deleteContact(id: any) {
+    this.service.deleteContact(id).subscribe((res) => {
+      this.displayCurrentUSer();
+      this.messageService.add({
+        severity: 'success',
+        summary: 'User Contact is Deleted Successfully',
+        detail: 'User Contact is Deleted Successfully !!!',
+      });
+    });
   }
 
   selectedFile: File | null = null;

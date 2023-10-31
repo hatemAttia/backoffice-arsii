@@ -23,7 +23,7 @@ export class MemberService {
     return this.http.put<any>('/api/arsii/admin/password', password);
   }
   public ContactService(contact: Contact): Observable<any> {
-    return this.http.post<any>('/api/arsii/admin/contact', contact);
+    return this.http.post<any>('/api/arsii/member/contact', contact);
   }
   public getUserById(): Observable<any> {
     return this.http.get<any>('api/arsii/member/me');
@@ -72,10 +72,14 @@ export class MemberService {
   }
 
   public getCategories(): Observable<any> {
-    return this.http.get('api/arsii/admin/category');
+    return this.http.get('api/arsii/member/category');
   }
   public deleteCategory(Id: number): Observable<any> {
     return this.http.delete<any>('api/arsii/admin/category/' + Id);
+  }
+
+  public deleteContact(Id: number): Observable<any> {
+    return this.http.delete<any>('api/arsii/member/contact/' + Id);
   }
   public getSkills(): Observable<any> {
     return this.http.get('api/arsii/admin/competence');

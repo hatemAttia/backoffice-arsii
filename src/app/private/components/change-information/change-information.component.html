@@ -83,7 +83,6 @@
                           accept="image/*"
                           (change)="onImageSelected($event)"
                           name="image"
-                          [(ngModel)]="user_update.image"
                         />
                       </div>
                     </div>
@@ -234,18 +233,17 @@
                   </div>
                   <div class="card-body">
                     <img
-                      (click)="openPdf(user_update.cv)"
+                      (click)="openPdf(currentCv)"
                       src="assets\images\téléchargement.png"
                       width="50"
                       style="cursor: pointer"
-                      *ngIf="user_update.cv"
+                      *ngIf="currentCv"
                     />
 
                     <input
                       class="mx-5"
                       type="file"
                       (change)="onFileSelected($event)"
-                      [(ngModel)]="cv.file"
                       name="cv"
                     />
                     <button
@@ -355,19 +353,23 @@
           <div class="card-body">
             <form #Changeform="ngForm">
               <div class="form-group">
-                <label for="cno">CType Contact:</label>
-                <input
-                  type="text"
-                  placeholder="Email /Web Site /Email and website"
-                  class="form-control"
-                  id="type"
-                  value="https://getbootstrap.com"
-                  name="type"
+                <label for="cno">Type Contact:</label>
+
+                <select
+                  class="floating-input form-control"
                   [(ngModel)]="contact.platform"
+                  [ngModelOptions]="{ standalone: true }"
                   required
-                  #plat="ngModel"
-                  [class.is-invalid]="plat.invalid && plat.touched"
-                />
+                  #platform="ngModel"
+                  [class.is-invalid]="platform.invalid && platform.touched"
+                >
+                  <option
+                    *ngFor="let platform of platformList"
+                    [value]="platform"
+                  >
+                    {{ platform }}
+                  </option>
+                </select>
               </div>
               <div class="form-group">
                 <label for="url">Url:</label>
@@ -394,12 +396,36 @@
               </button>
             </form>
             <br />
+            <div class="row">
+              <div class="col-md-4" *ngFor="let item of contactList">
+                <div
+                  style="
+                    background-color: #f8f7f7;
+                    border-radius: 5px;
+                    border: 0.5px solid hsl(0, 2%, 89%);
+                    padding: 10px;
+                  "
+                >
+                  <p>
+                    <strong>{{ item.platform }}</strong>
+                  </p>
+                  <p>{{ item.url }}</p>
+                  <button
+                    style="margin-right: 16px"
+                    (click)="deleteContact(item.id)"
+                    class="btn btn-danger"
+                  >
+                    Supprimer
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="tab-pane fade" id="change-skill" role="tabpanel">
-        <div class="card">
+        <!-- <div class="card">
           <thead>
             <tr>
               <th>Nom</th>
@@ -453,7 +479,7 @@
               <td></td>
             </tr>
           </tbody>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
