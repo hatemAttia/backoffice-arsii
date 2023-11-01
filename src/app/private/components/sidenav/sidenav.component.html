@@ -544,9 +544,17 @@
                   aria-expanded="false"
                 >
                   <img
+                    *ngIf="!userData?.image"
                     src="../assets/images/user/1.jpg"
                     class="img-fluid rounded-circle"
                     alt="user"
+                  />
+                  <img
+                    *ngIf="userData?.image"
+                    style="border-radius: 50%"
+                    [src]="'/api/arsii/file/img/' + userData?.image"
+                    alt="image"
+                    height="90"
                   />
                   <div class="caption ml-3">
                     <h6 class="mb-0 line-height">
