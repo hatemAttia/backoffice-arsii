@@ -60,12 +60,13 @@
               </tr>
             </thead>
             <tbody class="text-center">
-              <tr *ngFor="let user of users">
-                <td
-                  data-target="#details-user-modal"
-                  data-toggle="modal"
-                  (click)="selectedUser = user"
-                >
+              <tr
+                *ngFor="let user of users"
+                data-target="#details-user-modal"
+                data-toggle="modal"
+                (click)="selectedUser = user"
+              >
+                <td>
                   <img
                     *ngIf="!user.image"
                     src="assets/images/user/11.png"
