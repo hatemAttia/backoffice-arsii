@@ -28,6 +28,7 @@ import { ClubComponent } from './components/club/club.component';
 import { AddClubComponent } from './components/club/add-club/add-club.component';
 import { EditClubComponent } from './components/club/edit-club/edit-club.component';
 import { DetailUserComponent } from './components/user-list/detail-user/detail-user.component';
+import { MyEventsComponent } from './components/my-events/my-events.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { DetailUserComponent } from './components/user-list/detail-user/detail-u
     AddClubComponent,
     EditClubComponent,
     DetailUserComponent,
+    MyEventsComponent,
   ],
   imports: [
     CommonModule,

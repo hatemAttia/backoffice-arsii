@@ -14,6 +14,7 @@ import { AddUserComponent } from './components/user-list/add-user/add-user.compo
 import { AddEventComponent } from './components/events/add-event/add-event.component';
 import { PartenairesComponent } from './components/partenaire/partenaire.component';
 import { ClubComponent } from './components/club/club.component';
+import { MyEventsComponent } from './components/my-events/my-events.component';
 
 const routes: Routes = [
   {
@@ -59,6 +60,10 @@ const routes: Routes = [
       {
         path: 'events',
         component: EventsComponent,
+      },
+      {
+        path: 'my-events',
+        component: MyEventsComponent,
       },
       {
         path: 'addEvent',

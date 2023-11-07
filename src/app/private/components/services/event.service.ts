@@ -25,6 +25,10 @@ export class EventService {
     return this.httpClient.get(`${this.baseUrl}member/event`, { params });
   }
 
+  getMyEvents(id: string | null): Observable<any> {
+    return this.httpClient.get(`${this.baseUrl}member/userEvent/events/` + id);
+  }
+
   getEventById(eventId: Number): Observable<any> {
     return this.httpClient.get(this.baseUrl + 'admin/event/' + eventId);
   }
@@ -53,6 +57,10 @@ export class EventService {
         return this.httpClient.post(`${this.baseUrl}admin/event`, reqData);
       })
     );
+  }
+
+  reservationEvent(data: any) {
+    return this.httpClient.post(`${this.baseUrl}/member/userEvent`, data);
   }
 
   updateEventImg(id: number, data: Event) {
