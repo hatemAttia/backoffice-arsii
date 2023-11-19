@@ -32,6 +32,7 @@ export class AddPartenaireComponent implements OnInit {
       .addPartenaire({ ...this.newPartenaire, image: this.selectedFile })
       .subscribe((res: any) => {
         console.log(res);
+        this.selectedFile = null;
         this.emitEvent(true);
       });
   }

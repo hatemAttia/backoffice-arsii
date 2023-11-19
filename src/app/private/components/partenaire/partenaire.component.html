@@ -29,7 +29,7 @@
   data-toggle-extra="tab-content"
 >
   <div class="row">
-    <div class="col-lg-4 col-md-6" *ngFor="let item of partenaire">
+    <div class="col-lg-3 col-md-6" *ngFor="let item of partenaire">
       <div class="card-transparent card-block card-stretch card-height">
         <div class="card-body text-center p-0">
           <div class="item">
@@ -40,8 +40,8 @@
                 alt="image"
               />
             </div>
-            <div class="odr-content rounded">
-              <h4 class="mb-2">{{ item.name }}</h4>
+            <div class="odr-content rounded" style="min-height: 360px">
+              <h6 class="mb-2">{{ item.name }}</h6>
               <ul class="list-unstyled mb-3">
                 <li class="iq-card-icon-small mr-4 m-0 w-100">
                   <p class="m-0">contact : {{ item.contact }}</p>
@@ -49,7 +49,9 @@
               </ul>
               <ul class="list-unstyled mb-3">
                 <li class="iq-card-icon-small mr-4 w-100">
-                  <p class="m-0">address : {{ item.address }}</p>
+                  <p class="m-0" style="font-size: 14px; line-height: 14px">
+                    address : {{ item.address }}
+                  </p>
                 </li>
               </ul>
               <div

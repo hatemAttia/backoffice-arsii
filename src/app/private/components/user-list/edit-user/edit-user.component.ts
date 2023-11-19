@@ -21,19 +21,19 @@ export class EditUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //this.getUserById();
+    this.getUserById();
   }
 
   // use this when skander adds filter by id in the getAllUserByFilter request
-  // private getUserById(){
-  //   const userId = this.route.snapshot.paramMap.get('id');
+  private getUserById() {
+    const userId = this.route.snapshot.paramMap.get('id');
 
-  //   let filter = {"id": userId}
-  //   this.userService.getUserList(filter).subscribe(data => {
-  //     console.log('data', data);
-  //     this.users = data;
-  //   })
-  // }
+    let filter = { id: userId };
+    this.userService.getUserById(this.userId).subscribe((data) => {
+      console.log('data', data);
+      this.user = data;
+    });
+  }
 
   // private getUserById() {
   //   const filter = { role: 'MEMBER' };

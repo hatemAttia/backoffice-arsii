@@ -116,8 +116,12 @@
                       [(ngModel)]="user.role"
                       required
                     >
-                      <option>MEMBER</option>
-                      <option>ADMIN</option>
+                      <option value="MEMBER" [selected]="user.role == 'MEMBER'">
+                        MEMBER
+                      </option>
+                      <option value="ADMIN" [selected]="user.role == 'ADMIN'">
+                        ADMIN
+                      </option>
                     </select>
                     <div
                       class="text-danger text-sm ml-2"

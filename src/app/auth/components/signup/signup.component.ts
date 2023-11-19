@@ -23,7 +23,9 @@ export class SignupComponent implements OnInit {
     private messageService: MessageService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.user.post = 'MEMBER';
+  }
   SignupUser() {
     this.service.SignupUserService(this.user).subscribe(
       (data) => {

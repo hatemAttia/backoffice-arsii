@@ -89,7 +89,11 @@ export class ChangeInformationComponent implements OnInit {
         this.currentCv = data.cv;
         this.user_update.image = data.image;
         this.user_update.universityOrCompany = data.universityOrCompany;
-        this.user_update.dateOfBirth = data.dateOfBirth;
+        console.log(data.dateOfBirth);
+
+        this.user_update.dateOfBirth = new Date(data.dateOfBirth);
+        console.log(this.user_update.dateOfBirth);
+
         console.log(data);
         this.contactList = data.contacts;
       },

@@ -49,7 +49,7 @@
                         myForm.controls['formateur'].touched
                       "
                     >
-                     le nom du formateur est obligatoire.
+                      le nom du formateur est obligatoire.
                     </div>
                   </div>
                   <div class="form-group col-md-6">
@@ -111,7 +111,7 @@
                         myForm.controls['maxOfParticipants'].touched
                       "
                     >
-                     Le nombre des participants est obligatoire.
+                      Le nombre des participants est obligatoire.
                     </div>
                   </div>
                   <div class="form-group col-md-6">
@@ -154,6 +154,26 @@
                       "
                     >
                       Le type est obligatoire.
+                    </div>
+                  </div>
+                  <div class="form-group col-md-12">
+                    <label for="urlFacebook">url facebook</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="urlFacebook"
+                      placeholder="url"
+                      [(ngModel)]="newEvent.urlFacebook"
+                      required
+                    />
+                    <div
+                      class="text-danger text-sm ml-2"
+                      *ngIf="
+                        myForm.controls['urlFacebook']?.invalid &&
+                        myForm.controls['urlFacebook'].touched
+                      "
+                    >
+                      L'urlFacebook est obligatoire.
                     </div>
                   </div>
                   <div class="form-group col-md-12">
@@ -217,7 +237,9 @@
                   >
                     Ajouter
                   </button>
-                  <button class="btn bg-gray" (click)="goBack()">Annuler</button>
+                  <button class="btn bg-gray" (click)="goBack()">
+                    Annuler
+                  </button>
                 </div>
               </form>
             </div>

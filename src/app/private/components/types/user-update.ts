@@ -5,7 +5,7 @@ export class UserUpdate {
   email!: string;
   password!: string;
   gender!: string;
-  dateOfBirth!: string;
+  dateOfBirth!: Date;
   phoneNumber!: string;
   region!: string;
   job!: string;

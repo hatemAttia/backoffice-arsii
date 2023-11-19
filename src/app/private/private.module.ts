@@ -30,6 +30,7 @@ import { EditClubComponent } from './components/club/edit-club/edit-club.compone
 import { DetailUserComponent } from './components/user-list/detail-user/detail-user.component';
 import { MyEventsComponent } from './components/my-events/my-events.component';
 
+import { CalendarModule } from 'primeng/calendar';
 @NgModule({
   declarations: [
     BaseComponent,
@@ -63,6 +64,7 @@ import { MyEventsComponent } from './components/my-events/my-events.component';
     PrivateRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    CalendarModule,
     PaginatorModule,
   ],
   providers: [MemberService],

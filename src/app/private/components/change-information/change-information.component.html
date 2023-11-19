@@ -152,8 +152,8 @@
                     name="function"
                     [(ngModel)]="user_update.job"
                   >
-                    <option selected="">Etudiant</option>
-                    <option>Inéenieur</option>
+                    <option>Etudiant</option>
+                    <option>Ingénieur</option>
                     <option>Enseignat</option>
                   </select>
                 </div>
@@ -173,16 +173,22 @@
 
                 <div class="form-group col-sm-6">
                   <label for="dob">Date de Naissance:</label>
-                  <input
+                  <div>
+                    <p-calendar
+                      name="date"
+                      [(ngModel)]="user_update.dateOfBirth"
+                    ></p-calendar>
+                  </div>
+                  <!-- <input
                     class="form-control"
                     id="dob"
                     type="date"
-                    name="dob"
+                    name="date"
                     [(ngModel)]="user_update.dateOfBirth"
                     required
                     #date="ngModel"
                     [class.is-invalid]="date.invalid && date.touched"
-                  />
+                  /> -->
                 </div>
 
                 <div class="form-group col-sm-6">

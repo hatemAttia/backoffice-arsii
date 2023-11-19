@@ -26,9 +26,9 @@ export class UserService {
     );
   }
 
-  // serveImage(imageFile: any): Observable<any>{
-  //   return this.httpClient.get(this.baseUrl+'admin/img/'+ imageFile)
-  // }
+  getUserById(id: any) {
+    return this.httpClient.get(`${this.baseUrl}member/` + id);
+  }
 
   addUser(userData: User): Observable<any> {
     if (userData.image) {
