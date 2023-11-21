@@ -26,8 +26,8 @@
         id="collapseEdit1"
         *ngFor="let item of categories; let i = index"
       >
-        <div class="card card-widget task-card">
-          <div class="card-body">
+        <div class="card card-widget task-card m-0" style="border-radius: 0">
+          <div class="card-body" style="padding: 10px 10px">
             <div
               class="d-flex flex-wrap align-items-center justify-content-between"
             >
@@ -42,12 +42,9 @@
               >
                 <div
                   class="custom-control custom-task custom-checkbox custom-control-inline"
-                >
-                  
-                </div>
+                ></div>
                 <div>
-                  <h5 class="mb-2">{{ item.name }}</h5>
-                 
+                  <h5 class="">{{ item.name }}</h5>
                 </div>
               </div>
               <div class="media align-items-center mt-md-0 mt-3">
@@ -80,27 +77,13 @@
           id="collapseEdit1"
           style=""
         >
-          <div class="card card-list task-card">
-            <div
-              class="card-header d-flex align-items-center justify-content-between px-0 mx-3"
-            >
-              <div class="header-title">
-                <div
-                  class="custom-control custom-checkbox custom-control-inline"
-                >
-                 
-                  <label class="custom-control-label h5" for="customCheck05">
-                    {{ item.name }}</label
-                  >
-                </div>
-              </div>
-            </div>
+          <div class="card card-list task-card" style="margin-bottom: 0">
             <div class="card-body">
               <div class="form-group mb-0">
-                <label for="exampleInputText01" class="h5"
+                <label for="exampleInputText01" class="h5" style="color: gray"
                   >Ajouter compétence</label
                 >
-                <div class="form-group mb-3 position-relative">
+                <div class="form-group mb-2 d-flex" style="padding: 0 40px">
                   <input
                     type="text"
                     class="form-control bg-white"
@@ -108,31 +91,32 @@
                     style="width: 90%"
                     [(ngModel)]="newSkill"
                   />
-                  <a class="task-edit task-simple-edit text-body">
+                  <a class="text-body d-flex align-items-center">
                     <a
-                      class="btn bg-primary-light mr-3"
+                      class="btn bg-primary-light mx-3"
                       (click)="addSkill(item)"
                       >Ajouter</a
                     >
                   </a>
                 </div>
               </div>
-              <label for="exampleInputText01" class="h5">Les compétences</label>
+              <label for="exampleInputText01" class="h5" style="color: gray"
+                >Les compétences</label
+              >
               <div
-                class="form-group mb-3 position-relative"
+                class="form-group mb-1 d-flex align-items-center justify-content-between"
                 *ngFor="let skill of item.competences"
               >
                 <input
-                  style="width: 80%"
+                  style="width: 98%"
                   type="text"
                   class="form-control bg-white"
                   placeholder="{{ skill.name }}"
                   [(ngModel)]="skill.name"
                 />
-
-                <a class="task-edit task-simple-edit text-body">
+                <div class="text-body d-flex align-items-center">
                   <a
-                    class="btn bg-success-light mr-3"
+                    class="btn bg-success-light mx-3"
                     (click)="editSkill(item, skill)"
                     >Modifier</a
                   >
@@ -141,7 +125,7 @@
                     (click)="deleteSkill(skill)"
                     >Supprimer</a
                   >
-                </a>
+                </div>
               </div>
             </div>
           </div>
@@ -166,7 +150,7 @@
       <div class="modal-body">
         <div class="row">
           <div class="col-lg-12">
-            <div class="form-group mb-3">
+            <div class="form-group mb-2">
               <label for="exampleInputText02" class="h5"
                 >Titre de la categorie</label
               >
@@ -183,7 +167,7 @@
             </div>
           </div>
           <div class="col-lg-12">
-            <div class="form-group mb-3">
+            <div class="form-group mb-2">
               <label for="exampleInputText02" class="h5">Description</label>
               <input
                 type="text"

@@ -40,24 +40,27 @@
                 alt="image"
               />
             </div>
-            <div class="odr-content rounded" style="min-height: 360px">
+            <div
+              class="odr-content rounded"
+              style="min-height: 300px; padding: 40px 20px 20px"
+            >
               <h6 class="mb-2">{{ item.name }}</h6>
-              <ul class="list-unstyled mb-3">
+              <ul class="list-unstyled mb-1">
                 <li class="iq-card-icon-small mr-4 m-0 w-100">
-                  <p class="m-0">contact : {{ item.contact }}</p>
+                  <p class="m-0 text-start">contact : {{ item.contact }}</p>
                 </li>
               </ul>
-              <ul class="list-unstyled mb-3">
+              <ul class="list-unstyled mb-1">
                 <li class="iq-card-icon-small mr-4 w-100">
-                  <p class="m-0" style="font-size: 14px; line-height: 14px">
+                  <p
+                    class="m-0 text-start"
+                    style="font-size: 14px; line-height: 14px"
+                  >
                     address : {{ item.address }}
                   </p>
                 </li>
               </ul>
-              <div
-                class="pl-3 border-left btn-new"
-                *ngIf="currentRole == 'ADMIN'"
-              >
+              <div class="pl-3 btn-new" *ngIf="currentRole == 'ADMIN'">
                 <a
                   href="#"
                   class="btn btn-primary"
@@ -66,6 +69,7 @@
                   (click)="selectPartenaire(item)"
                   >Modifier</a
                 >
+                <a href="#" class="btn btn-secondary mx-1">Supprimer</a>
               </div>
             </div>
           </div>

@@ -52,12 +52,12 @@
             </div>
           </div>
           <div class="card-body">
-            <form #Changeform="ngForm">
+            <form #Changeform="ngForm" *ngIf="user_update">
               <div class="form-group row align-items-center">
                 <label for="image-upload" class="col-md-3 col-form-label"
                   >Image Profile</label
                 >
-                <div class="col-md-9">
+                <div class="col-md-9" *ngIf="user_update">
                   <div class="profile-img-edit">
                     <div class="crm-profile-img-edit">
                       <img
