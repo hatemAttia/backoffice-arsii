@@ -29,9 +29,12 @@ export class EditUserComponent implements OnInit {
     const userId = this.route.snapshot.paramMap.get('id');
 
     let filter = { id: userId };
-    this.userService.getUserById(this.userId).subscribe((data) => {
+    this.userService.getUserById(this.userId).subscribe((data: any) => {
       console.log('data', data);
       this.user = data;
+      console.log(data.dateOfBirth);
+
+      this.user.dateOfBirth = new Date(data.dateOfBirth);
     });
   }
 

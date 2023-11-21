@@ -22,3 +22,17 @@ input[type="file"]::file-selector-button {
 input[type="file"]::file-selector-button:hover {
   background: #0d45a5;
 }
+
+:host ::ng-deep .p-calendar {
+  width: 100%;
+}
+:host ::ng-deep .p-calendar .p-inputtext {
+  height: 50px;
+  line-height: 50px;
+  background: #f8f7f7;
+  border: 1px solid #e0e2db;
+  font-size: 14px;
+  color: #605c8d;
+  border-radius: 16px;
+  box-shadow: none;
+}

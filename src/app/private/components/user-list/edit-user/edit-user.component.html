@@ -16,12 +16,53 @@
             <div class="card-body">
               <form #myForm="ngForm">
                 <div class="row">
-                  <div class="form-group col-sm-6">
-                    <label for="uname">Le nom de l'utilisateur</label>
+                  <div class="form-group col-md-6">
+                    <label for="fname">Prénom:</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="firstName"
+                      placeholder="prénom"
+                      [(ngModel)]="user.firstName"
+                      required
+                    />
+                    <div
+                      class="text-danger text-sm ml-2"
+                      *ngIf="
+                        myForm.controls['firstName']?.invalid &&
+                        myForm.controls['firstName'].touched
+                      "
+                    >
+                      Le prénom est obligatoire.
+                    </div>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="lname">Nom:</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="lastName"
+                      placeholder="nom"
+                      [(ngModel)]="user.lastName"
+                      required
+                    />
+                    <div
+                      class="text-danger text-sm ml-2"
+                      *ngIf="
+                        myForm.controls['lastName']?.invalid &&
+                        myForm.controls['lastName'].touched
+                      "
+                    >
+                      Le nom est obligatoire.
+                    </div>
+                  </div>
+                  <!-- <div class="form-group col-md-6">
+                    <label for="uname">Nom de l'utilisateur:</label>
                     <input
                       type="text"
                       class="form-control"
                       name="userName"
+                      placeholder="Username"
                       [(ngModel)]="user.userName"
                       required
                     />
@@ -32,60 +73,18 @@
                         myForm.controls['userName'].touched
                       "
                     >
-                      Le nom est obligatoire.
+                      Le nom de l'utilisateur est obligatoire.
                     </div>
-                  </div>
-                  <div class="form-group col-sm-6">
-                    <label for="email">Email:</label>
-                    <input
-                      type="email"
-                      class="form-control"
-                      name="email"
-                      [(ngModel)]="user.email"
-                      required
-                    />
-                    <div
-                      class="text-danger text-sm ml-2"
-                      *ngIf="
-                        myForm.controls['email']?.invalid &&
-                        myForm.controls['email'].touched &&
-                        !myForm.controls['email']?.hasError('email')
-                      "
-                    >
-                      L'email est obligatoire.
-                    </div>
-                    <div
-                      class="text-danger mt-2"
-                      *ngIf="myForm.controls['email']?.hasError('email')"
-                    >
-                      Merci d'entrer une adresse email valide.
-                    </div>
-                  </div>
-                  <div class="form-group col-sm-6">
-                    <label for="email">Région:</label>
-                    <input
-                      type="email"
-                      class="form-control"
-                      name="region"
-                      [(ngModel)]="user.region"
-                      required
-                    />
-                    <div
-                      class="text-danger text-sm ml-2"
-                      *ngIf="
-                        myForm.controls['region']?.invalid &&
-                        myForm.controls['region'].touched
-                      "
-                    >
-                      La région est obligatoire.
-                    </div>
-                  </div>
-                  <div class="form-group col-sm-6">
-                    <label for="cname">Numéro de téléphone:</label>
+                  </div> -->
+                  <div class="form-group col-md-6">
+                    <label for="mobno">Numéro de téléphone:</label>
                     <input
                       type="text"
                       class="form-control"
                       name="phoneNumber"
+                      placeholder="22558877"
+                      maxlength="8"
+                      minlength="8"
                       [(ngModel)]="user.phoneNumber"
                       required
                     />
@@ -105,32 +104,51 @@
                         myForm.controls['phoneNumber']?.hasError('minlength')
                       "
                     >
-                      Le numéro de téléphone doit contenir 8 chiffres.
+                      Phone number must have 8 characters.
                     </div>
                   </div>
-                  <div class="form-group col-sm-6">
-                    <label>Role:</label>
-                    <select
+                  <div class="form-group col-md-6">
+                    <label for="email">Email:</label>
+                    <input
+                      type="email"
                       class="form-control"
-                      name="role"
-                      [(ngModel)]="user.role"
+                      name="email"
+                      placeholder="Email"
+                      [(ngModel)]="user.email"
                       required
-                    >
-                      <option value="MEMBER" [selected]="user.role == 'MEMBER'">
-                        MEMBER
-                      </option>
-                      <option value="ADMIN" [selected]="user.role == 'ADMIN'">
-                        ADMIN
-                      </option>
-                    </select>
+                      email
+                    />
                     <div
                       class="text-danger text-sm ml-2"
                       *ngIf="
-                        myForm.controls['role']?.invalid &&
-                        myForm.controls['role'].touched
+                        myForm.controls['email']?.invalid &&
+                        myForm.controls['email'].touched &&
+                        !myForm.controls['email']?.hasError('email')
                       "
                     >
-                      Merci de séléctionner un role.
+                      L'email est obligatoire.
+                    </div>
+                    <div
+                      class="text-danger mt-2"
+                      *ngIf="myForm.controls['email']?.hasError('email')"
+                    >
+                      Merci de tapper une adresse valide.
+                    </div>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="email">Date de naissance:</label>
+                    <p-calendar
+                      name="date"
+                      [(ngModel)]="user.dateOfBirth"
+                    ></p-calendar>
+                    <div
+                      class="text-danger text-sm ml-2"
+                      *ngIf="
+                        myForm.controls['dateOfBirth']?.invalid &&
+                        myForm.controls['dateOfBirth'].touched
+                      "
+                    >
+                      La date de naisssance est obligatoire.
                     </div>
                   </div>
                   <div class="form-group col-sm-6">
@@ -177,14 +195,98 @@
                       Merci de séléctionner une poste.
                     </div>
                   </div>
+                  <div class="form-group col-sm-6">
+                    <label>Bureau régional</label>
+                    <select
+                      class="form-control"
+                      name="office"
+                      [(ngModel)]="user.office"
+                      required
+                    >
+                      <option>OFFICE_SFAX</option>
+                      <option>OFFICE_TUNIS</option>
+                      <option>OFFICE_SOUSSE</option>
+                    </select>
+                    <div
+                      class="text-danger text-sm ml-2"
+                      *ngIf="
+                        myForm.controls['office']?.invalid &&
+                        myForm.controls['office'].touched
+                      "
+                    >
+                      Merci de séléctionner un bureau.
+                    </div>
+                  </div>
+
+                  <div class="form-group col-sm-6">
+                    <label>Genre:</label>
+                    <select
+                      class="form-control"
+                      name="gender"
+                      [(ngModel)]="user.gender"
+                      required
+                    >
+                      <option value="male">masculin</option>
+                      <option value="female">féminin</option>
+                    </select>
+                    <div
+                      class="text-danger text-sm ml-2"
+                      *ngIf="
+                        myForm.controls['gender']?.invalid &&
+                        myForm.controls['gender'].touched
+                      "
+                    >
+                      Must select on option.
+                    </div>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="cname">Le nom de l'université:</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="universityOrCompany"
+                      placeholder="le nom de l'université"
+                      [(ngModel)]="user.universityOrCompany"
+                      required
+                    />
+                    <div
+                      class="text-danger text-sm ml-2"
+                      *ngIf="
+                        myForm.controls['universityOrCompany']?.invalid &&
+                        myForm.controls['universityOrCompany'].touched
+                      "
+                    >
+                      Le nom de l'université est obligatoire.
+                    </div>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="city">Région:</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="region"
+                      placeholder="région"
+                      [(ngModel)]="user.region"
+                      required
+                    />
+                    <div
+                      class="text-danger text-sm ml-2"
+                      *ngIf="
+                        myForm.controls['region']?.invalid &&
+                        myForm.controls['region'].touched
+                      "
+                    >
+                      La région est obligatoire.
+                    </div>
+                  </div>
                 </div>
                 <input
                   class="mx-5"
                   type="file"
                   (change)="onFileSelected($event)"
-                  [(ngModel)]="user.image"
                   name="cv"
                 />
+                <hr />
                 <div class="text-center mt-2">
                   <button
                     type="submit"
