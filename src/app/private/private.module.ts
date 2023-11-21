@@ -31,6 +31,9 @@ import { DetailUserComponent } from './components/user-list/detail-user/detail-u
 import { MyEventsComponent } from './components/my-events/my-events.component';
 
 import { CalendarModule } from 'primeng/calendar';
+import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
+
+import { SkillsModalComponent } from './components/shared/skills-modal/skills-modal.component';
 @NgModule({
   declarations: [
     BaseComponent,
@@ -58,6 +61,7 @@ import { CalendarModule } from 'primeng/calendar';
     EditClubComponent,
     DetailUserComponent,
     MyEventsComponent,
+    SkillsModalComponent,
   ],
   imports: [
     CommonModule,
@@ -66,7 +70,8 @@ import { CalendarModule } from 'primeng/calendar';
     ReactiveFormsModule,
     CalendarModule,
     PaginatorModule,
+    DynamicDialogModule,
   ],
-  providers: [MemberService],
+  providers: [MemberService, DialogService],
 })
 export class PrivateModule {}
