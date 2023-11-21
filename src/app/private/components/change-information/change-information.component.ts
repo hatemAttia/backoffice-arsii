@@ -18,6 +18,7 @@ export class ChangeInformationComponent implements OnInit {
   user_update = new UserUpdate();
   msg = '';
   skill = new Skill();
+  selectedCategory = null;
   cv = new Cv();
   contact = new Contact();
   contactList: any = [];
@@ -31,8 +32,8 @@ export class ChangeInformationComponent implements OnInit {
     'Facebook',
     'Instagram',
   ];
-  categories: Observable<any> | null = null;
-  skills: Observable<any> | null = null;
+  categories: any;
+  skills: any;
   id!: number;
   password_update = {
     oldPassword: '',
@@ -66,10 +67,18 @@ export class ChangeInformationComponent implements OnInit {
 
   ngOnInit(): void {
     this.displayCurrentUSer();
-    this.categories = this.service.getCategories();
-    this.skills = this.service.getSkills();
+    this.service.getCategories().subscribe((res) => {
+      this.categories = res;
+    });
+    this.getSkills();
   }
 
+  getSkills() {
+    this.service.getSkills().subscribe((res) => {
+      this.skills = res;
+      console.log(res);
+    });
+  }
   displayCurrentUSer() {
     this.service.getUserById().subscribe(
       (data) => {
@@ -264,5 +273,33 @@ export class ChangeInformationComponent implements OnInit {
 
   openPdf(cv: any) {
     window.open('/api/arsii/file/PDF/' + cv, '_blank');
+  }
+
+  addSkill(skill: any) {
+    this.service
+      .addSkills({
+        competenceId: skill.id,
+        level: 'Beginner',
+      })
+      .subscribe((res) => {
+        this.getSkills();
+
+        console.log(res);
+      });
+  }
+
+  deleteSkill(skill: any) {
+    const userSkill = this.skills.find(
+      (el: any) => el.competence.id == skill.id
+    );
+    this.service.deleteUserSkill(userSkill.id).subscribe((res) => {
+      this.getSkills();
+
+      console.log(res);
+    });
+  }
+
+  includeSkill(skill: any) {
+    return !!this.skills.find((el: any) => el.competence.id == skill.id);
   }
 }

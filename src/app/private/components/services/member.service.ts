@@ -82,13 +82,17 @@ export class MemberService {
     return this.http.delete<any>('api/arsii/member/contact/' + Id);
   }
   public getSkills(): Observable<any> {
-    return this.http.get('api/arsii/admin/competence');
+    return this.http.get('api/arsii/member/userCompetence/competences');
   }
   public deleteSkill(Id: number): Observable<any> {
     return this.http.delete<any>('api/arsii/admin/competence/' + Id);
   }
-  public addSkills(comp: Skill): Observable<any> {
-    return this.http.post('api/arsii/member/usercompetences', comp);
+  public addSkills(skill: any): Observable<any> {
+    return this.http.post('api/arsii/member/userCompetence', skill);
+  }
+
+  public deleteUserSkill(id: any): Observable<any> {
+    return this.http.delete('api/arsii/member/userCompetence/' + id);
   }
   public getAllOpportunity(): Observable<any> {
     return this.http.get<any>('api/arsii/admin/opportunity/');

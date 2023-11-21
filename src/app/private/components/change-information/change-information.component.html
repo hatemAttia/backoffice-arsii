@@ -431,7 +431,106 @@
       </div>
 
       <div class="tab-pane fade" id="change-skill" role="tabpanel">
-        <!-- <div class="card">
+        <div
+          class="col-lg-12"
+          id="collapseEdit1"
+          *ngFor="let item of categories; let i = index"
+        >
+          <div class="card card-widget task-card m-0" style="border-radius: 0">
+            <div class="card-body" style="padding: 10px 10px">
+              <div
+                (click)="
+                  selectedCategory != item
+                    ? (selectedCategory = item)
+                    : (selectedCategory = null)
+                "
+                class="d-flex flex-wrap align-items-center justify-content-between"
+              >
+                <div class="d-flex align-items-center" style="cursor: pointer">
+                  <div
+                    class="custom-control custom-task custom-checkbox custom-control-inline"
+                  ></div>
+                  <div>
+                    <h5 class="">{{ item.name }}</h5>
+                  </div>
+                </div>
+                <div class="media align-items-center mt-md-0 mt-3">
+                  <a class="btn" [ngClass]="'bg-success-light'" role="button"
+                    ><i class="ri-edit-box-line m-0"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="collapse"
+            [class.show]="selectedCategory === item"
+            id="collapseEdit1"
+            style=""
+          >
+            <div class="card mb-3">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <h5 class="mb-2">Les compétences</h5>
+                    <div class="row">
+                      <div
+                        class="col-lg-4 col-md-6 col-12 mb-1"
+                        *ngFor="let skill of item.competences"
+                      >
+                        <div
+                          class="form-group mb-1 d-flex align-items-center justify-content-start mr-0"
+                        >
+                          <a
+                            *ngIf="!includeSkill(skill)"
+                            (click)="addSkill(skill)"
+                            class="btn mx-2"
+                            [ngClass]="'bg-primary-light'"
+                            role="button"
+                            ><i class="ri-add-line m-0"></i
+                          ></a>
+                          <a
+                            *ngIf="includeSkill(skill)"
+                            (click)="deleteSkill(skill)"
+                            class="btn mx-2"
+                            [ngClass]="'bg-secondary-light'"
+                            role="button"
+                            ><i class="las la-trash-alt m-0"></i
+                          ></a>
+                          <label class="mb-1" for="customCheck4">{{
+                            skill.name
+                          }}</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="card card-list task-card" style="margin-bottom: 0">
+                <div class="card-body">
+                  <label for="exampleInputText01" class="h5" style="color: gray"
+                    >Les compétences</label
+                  >
+                  <div
+                    class="card form-group mb-1 d-flex align-items-center justify-content-start"
+                    *ngFor="let skill of item.competences"
+                  >
+                    <label
+                      style="width: 50%; padding: 0px 10px"
+                      type="text"
+                      class="form-control bg-white"
+                      >{{ skill.name }}</label
+                    >
+                    <a class="btn" [ngClass]="'bg-primary-light'" role="button"
+                      ><i class="ri-add-line m-0"></i
+                    ></a>
+                  </div>
+                </div>
+              </div> -->
+            </div>
+          </div>
+
+          <!-- <div class="card">
           <thead>
             <tr>
               <th>Nom</th>
@@ -486,6 +585,7 @@
             </tr>
           </tbody>
         </div> -->
+        </div>
       </div>
     </div>
   </div>
